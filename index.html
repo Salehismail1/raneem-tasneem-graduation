@@ -13,13 +13,14 @@
     --script:"Snell Roundhand","Segoe Script","Brush Script MT",cursive;
   }
   *{box-sizing:border-box}
+  html,body{height:100%;overflow:hidden}
   body{margin:0;background:#f4efe6;color:#3a3350;font-family:var(--sans);
     -webkit-font-smoothing:antialiased;line-height:1.5}
 
   /* ============ THE SCENE ============ */
-  .scene{position:relative;min-height:100vh;overflow:hidden;display:flex;
+  .scene{position:relative;height:100vh;height:100dvh;overflow:hidden;display:flex;
     flex-direction:column;align-items:center;justify-content:space-between;
-    padding:34px 16px 110px}
+    padding:16px 16px 92px}
   .skyday,.skynight{position:absolute;inset:0;transition:opacity 2.2s ease}
   .skyday{background:linear-gradient(180deg,#bfe3f8 0%,#dcebfa 45%,#fbe4ec 78%,#f6e9d8 100%);opacity:1}
   .skynight{background:linear-gradient(180deg,#070b1e 0%,#141a38 45%,#2a2350 78%,#3a2c55 100%);opacity:0}
@@ -71,15 +72,15 @@
   .bunt i:nth-child(5n+5){background:#8ea2ff}
 
   /* header */
-  .hdr{position:relative;z-index:5;text-align:center;margin-top:26px}
-  .hdr .k{font-size:12px;letter-spacing:.42em;text-transform:uppercase;color:#7a6aa8;
+  .hdr{position:relative;z-index:5;text-align:center;margin-top:22px}
+  .hdr .k{font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:#7a6aa8;
     font-weight:700;transition:color 2s ease}
-  .hdr h1{font-family:var(--script);font-weight:400;margin:10px 0 2px;line-height:1.05;
-    font-size:clamp(44px,9vw,84px);color:#4a3a75;transition:color 2s ease;text-wrap:balance}
-  .hdr .sub{font-family:var(--serif);font-style:italic;font-size:clamp(15px,2.4vw,21px);
+  .hdr h1{font-family:var(--script);font-weight:400;margin:8px 0 2px;line-height:1.05;
+    font-size:clamp(32px,6.5vw,58px);color:#4a3a75;transition:color 2s ease;text-wrap:balance}
+  .hdr .sub{font-family:var(--serif);font-style:italic;font-size:clamp(13px,2vw,17px);
     color:#6d6390;transition:color 2s ease}
-  .hdr .tw{font-family:var(--serif);font-size:clamp(14px,2.2vw,18px);color:#8a7ab0;
-    min-height:1.7em;margin-top:12px;transition:color 2s ease}
+  .hdr .tw{font-family:var(--serif);font-size:clamp(12px,1.9vw,15px);color:#8a7ab0;
+    min-height:1.6em;margin-top:8px;transition:color 2s ease}
   .hdr .tw::after{content:"▌";animation:blink 1.1s steps(1) infinite;opacity:.7}
   @keyframes blink{50%{opacity:0}}
   .scene.night .hdr .k{color:#b9a3e0}
@@ -95,7 +96,7 @@
 
   /* ============ THE SISTERS ============ */
   .sisters{display:flex;justify-content:center;gap:clamp(30px,8vw,100px);align-items:flex-end;
-    position:relative;z-index:4;margin:auto 0 10px;padding-top:64px}
+    position:relative;z-index:4;margin:auto 0 4px;padding-top:56px}
   .sis{display:flex;flex-direction:column;align-items:center;position:relative;cursor:pointer;
     animation:bob 3.2s ease-in-out infinite;transition:transform .7s cubic-bezier(.3,.9,.4,1)}
   .sis.b{animation-delay:-1.6s}
@@ -118,8 +119,8 @@
   .sis.talk .bub{transform:translateX(-50%) scale(1)}
 
   .schar{position:relative;width:130px;height:226px}
-  .sis.a .schar{transform:scale(1.06);transform-origin:bottom center}
-  .sis.b .schar{transform:scale(.88);transform-origin:bottom center}
+  .sis.a .schar{transform:scale(.98);transform-origin:bottom center}
+  .sis.b .schar{transform:scale(.82);transform-origin:bottom center}
   /* cap */
   .cap9{position:absolute;top:0;left:50%;transform:translateX(-50%);z-index:6;width:96px;height:40px;
     filter:drop-shadow(0 3px 3px rgba(0,0,0,.22))}
@@ -222,7 +223,7 @@
   .sisters.thrown .arm9.l,.sisters.hug .sis.b .arm9.l,.sisters.dance .arm9.l{transform:rotate(148deg)}
   .sisters.thrown .arm9.r,.sisters.hug .sis.a .arm9.r,.sisters.dance .arm9.r{transform:rotate(-148deg)}
   .dip9{position:absolute;bottom:-11px;left:-4px;font-size:22px;transform:rotate(-24deg)}
-  .tag9{margin-top:12px;font-family:var(--script);font-size:32px;color:#5c4a8a;transition:color 2s ease}
+  .tag9{margin-top:8px;font-family:var(--script);font-size:26px;color:#5c4a8a;transition:color 2s ease}
   .sis.b .tag9{color:#a83e6c}
   .scene.night .tag9{color:#e8d4ff}
   .scene.night .sis.b .tag9{color:#ffc9e0}
@@ -238,12 +239,12 @@
   .scene.night .tip{color:#9a86c8}
 
   /* ============ GROUND ============ */
-  .grass{position:absolute;left:0;right:0;bottom:0;height:96px;z-index:3;
+  .grass{position:absolute;left:0;right:0;bottom:0;height:80px;z-index:3;
     background:linear-gradient(180deg,rgba(159,206,143,0),#9fce8f 42%,#7db56c);
     transition:filter 2s ease}
   .scene.night .grass{filter:brightness(.45) saturate(.7)}
-  .flowers{position:absolute;left:0;right:0;bottom:8px;z-index:4;display:flex;
-    justify-content:space-around;font-size:22px;pointer-events:none}
+  .flowers{position:absolute;left:0;right:0;bottom:6px;z-index:4;display:flex;
+    justify-content:space-around;font-size:19px;pointer-events:none}
   .flowers span{display:inline-block;transform-origin:bottom;animation:swayf ease-in-out infinite alternate}
   .flowers span:nth-child(odd){animation-duration:2.8s}
   .flowers span:nth-child(even){animation-duration:3.6s;animation-delay:-1.4s}
@@ -255,6 +256,47 @@
     100%{transform:translate(160px,-20px) rotate(-8deg)}}
   .scene.night .bfly{opacity:0;transition:opacity 1.5s}
   .bfly{transition:opacity 1.5s}
+
+  /* ============ RANEEM'S EXTRA BEAUTY ============ */
+  .sis.a .eyes9 i{width:11px;height:14px}
+  .sis.a .eyes9 i::before{width:8px;height:2.5px}
+  .sis.a .eyes9 i::after{width:4px;height:4px}
+  .sis.a .smile9{background:#c04a52}
+  .sis.a .smile9::after{background:#f2a2a2}
+  .sis.a .blush9{background:rgba(244,120,140,.55)}
+  .flow9{position:absolute;top:4px;right:-2px;font-size:16px;z-index:5;
+    transform:rotate(18deg);animation:flowtw 3.4s ease-in-out infinite alternate}
+  @keyframes flowtw{to{transform:rotate(6deg) scale(1.1)}}
+  .nl9{position:absolute;top:15px;left:50%;transform:translateX(-50%);width:20px;height:9px;
+    border:2px solid #f0cd7a;border-top:none;border-radius:0 0 11px 11px;display:none}
+  .nl9::after{content:"";position:absolute;bottom:-4px;left:50%;transform:translateX(-50%);
+    width:5px;height:5px;border-radius:50%;background:#f0cd7a}
+  .sis.a .nl9{display:block}
+
+  /* ============ AMBIENT EXTRAS ============ */
+  .bal{position:absolute;bottom:-70px;z-index:2;pointer-events:none;animation:balup linear forwards}
+  @keyframes balup{0%{transform:translate(0,0)}25%{transform:translate(16px,-28vh)}
+    50%{transform:translate(-12px,-56vh)}75%{transform:translate(14px,-84vh)}
+    100%{transform:translate(0,-118vh)}}
+  .fly9{position:absolute;width:5px;height:5px;border-radius:50%;background:#ffe98a;z-index:3;
+    opacity:0;transition:opacity 2s ease;pointer-events:none;
+    animation:flywander 11s ease-in-out infinite alternate,flypulse 1.6s ease-in-out infinite}
+  .scene.night .fly9{opacity:.9}
+  .fly9.f2{animation-duration:14s,2.1s;animation-delay:-6s,0s}
+  .fly9.f3{animation-duration:9s,1.3s;animation-delay:-3s,-.5s}
+  .fly9.f4{animation-duration:16s,1.9s;animation-delay:-10s,-.8s}
+  @keyframes flywander{0%{transform:translate(0,0)}25%{transform:translate(70px,-50px)}
+    50%{transform:translate(150px,-14px)}75%{transform:translate(80px,-70px)}
+    100%{transform:translate(190px,-30px)}}
+  @keyframes flypulse{0%,100%{box-shadow:0 0 4px 1px rgba(255,233,138,.4)}
+    50%{box-shadow:0 0 13px 4px rgba(255,233,138,.95)}}
+  .spk{position:fixed;z-index:55;pointer-events:none;font-size:13px;
+    animation:spkfade .9s ease-out forwards}
+  @keyframes spkfade{0%{opacity:1;transform:translate(-50%,-50%) scale(.6)}
+    100%{opacity:0;transform:translate(-50%,-150%) scale(1.2) rotate(20deg)}}
+  .sis.wave .arm9.r{animation:wavearm 1.1s ease-in-out 2}
+  @keyframes wavearm{0%,100%{transform:rotate(-14deg)}45%{transform:rotate(-158deg)}
+    70%{transform:rotate(-128deg)}}
 
   #confetti{position:fixed;inset:0;pointer-events:none;z-index:60}
 
@@ -280,7 +322,27 @@
   @media (max-width:520px){
     .sis.a .schar{transform:scale(.88)}
     .sis.b .schar{transform:scale(.73)}
-    .hdr{margin-top:36px}
+    .hdr{margin-top:30px}
+  }
+  @media (max-height:660px){
+    .hdr{margin-top:8px}
+    .hdr h1{font-size:clamp(26px,5.5vh,42px)}
+    .hdr .tw{display:none}
+    .sisters{padding-top:50px}
+    .sis.a .schar{transform:scale(.8)}
+    .sis.b .schar{transform:scale(.67)}
+    .tag9{font-size:21px;margin-top:4px}
+    .grass{height:62px}
+    .scene{padding-bottom:70px}
+  }
+  @media (max-height:560px){
+    .hdr .sub{display:none}
+    .sisters{padding-top:44px}
+    .schar{height:180px}
+    .sis.a .schar{transform:scale(.62)}
+    .sis.b .schar{transform:scale(.52)}
+    .tag9{font-size:17px}
+    .tip{display:none}
   }
 </style>
 
@@ -319,11 +381,12 @@
         <div class="hairback9"></div>
         <div class="cap9"><div class="band"></div><div class="board"></div><div class="btnc"></div><div class="tass"></div></div>
         <div class="head9"><div class="hair9"></div><div class="hairshine9"></div>
+          <span class="flow9">🌸</span>
           <div class="brow9 bl"></div><div class="brow9 br"></div>
           <div class="eyes9"><i></i><i></i></div><div class="nose9"></div>
           <div class="smile9"></div><div class="blush9 l"></div><div class="blush9 r"></div></div>
         <div class="neck9"></div>
-        <div class="gown9"><div class="col9"></div><div class="stole9"></div>
+        <div class="gown9"><div class="col9"></div><div class="nl9"></div><div class="stole9"></div>
           <div class="sash9">2026</div><div class="arm9 l"></div>
           <div class="arm9 r"><span class="dip9">📜</span></div></div>
       </div>
@@ -356,6 +419,10 @@
   </div>
   <span class="bfly" aria-hidden="true" style="left:12%">🦋</span>
   <span class="bfly f2" aria-hidden="true" style="left:58%">🦋</span>
+  <span class="fly9" aria-hidden="true" style="left:16%;bottom:96px"></span>
+  <span class="fly9 f2" aria-hidden="true" style="left:42%;bottom:124px"></span>
+  <span class="fly9 f3" aria-hidden="true" style="left:62%;bottom:88px"></span>
+  <span class="fly9 f4" aria-hidden="true" style="left:78%;bottom:134px"></span>
 </section>
 
 <script>
@@ -389,7 +456,8 @@
       x:ox+(Math.random()-.5)*280,y:oy,
       vx:(Math.random()-.5)*12,vy:Math.random()*-15-4,g:.32+Math.random()*.2,
       s:5+Math.random()*7,r:Math.random()*6.28,vr:(Math.random()-.5)*.4,
-      c:pal[i%pal.length],life:120+Math.random()*50,rect:Math.random()>.4});}
+      c:pal[i%pal.length],life:120+Math.random()*50,rect:Math.random()>.4,
+      emoji:(i%16===0)?'🎓':null});}
     if(!raf)loop();
   }
   function loop(){cx.clearRect(0,0,cv.width,cv.height);
@@ -397,7 +465,9 @@
       p.vy+=p.g;p.x+=p.vx;p.y+=p.vy;p.r+=p.vr;p.life--;
       cx.save();cx.translate(p.x,p.y);cx.rotate(p.r);cx.fillStyle=p.c;
       cx.globalAlpha=Math.max(0,Math.min(1,p.life/40));
-      if(p.rect)cx.fillRect(-p.s/2,-p.s/2,p.s,p.s*1.6);
+      if(p.emoji){cx.font=Math.round(p.s*2.6)+'px serif';cx.textAlign='center';
+        cx.fillText(p.emoji,0,p.s*.8);}
+      else if(p.rect)cx.fillRect(-p.s/2,-p.s/2,p.s,p.s*1.6);
       else{cx.beginPath();cx.arc(0,0,p.s/2,0,6.28);cx.fill();}
       cx.restore();
       if(p.life<=0||p.y>cv.height+40)parts.splice(i,1);}
@@ -489,7 +559,7 @@
   /* ---------- night finale: stars + fireworks ---------- */
   var scene=document.getElementById('scene'),
       fw=document.getElementById('nightfx'),fx=fw.getContext('2d'),
-      night=false,stars=[],rockets=[],sparks=[],fraf=null,fauto=null;
+      night=false,stars=[],rockets=[],sparks=[],shooters=[],fraf=null,fauto=null;
   function fsize(){var r=scene.getBoundingClientRect();fw.width=r.width;fw.height=r.height;
     stars=[];for(var i=0;i<150;i++)stars.push({x:Math.random()*fw.width,
       y:Math.random()*fw.height*.75,z:Math.random(),twk:Math.random()*6.28});}
@@ -506,6 +576,12 @@
       fx.fillStyle=s.z>.8?'#cdd6ff':'#fff';
       fx.beginPath();fx.arc(s.x,s.y,s.z*1.5+.3,0,6.28);fx.fill();}
     fx.globalAlpha=1;
+    for(var m=shooters.length-1;m>=0;m--){var sh=shooters[m];
+      sh.x+=sh.vx;sh.y+=sh.vy;sh.life--;
+      fx.strokeStyle='rgba(210,222,255,'+Math.max(0,sh.life/40)+')';fx.lineWidth=2;
+      fx.beginPath();fx.moveTo(sh.x,sh.y);
+      fx.lineTo(sh.x-sh.vx*6,sh.y-sh.vy*6);fx.stroke();
+      if(sh.life<=0)shooters.splice(m,1);}
     for(var j=rockets.length-1;j>=0;j--){var r=rockets[j];r.y+=r.vy;r.vy+=.06;
       fx.fillStyle='hsl('+r.hue+',90%,75%)';fx.fillRect(r.x-1.5,r.y,3,9);
       if(r.y<=r.targetY||r.vy>=-1){explode(r);rockets.splice(j,1);}}
@@ -518,9 +594,12 @@
     fx.globalAlpha=1;fraf=requestAnimationFrame(fdraw);}
   function startNight(){fsize();if(!fraf)fdraw();
     launch();setTimeout(launch,600);
-    clearInterval(fauto);fauto=setInterval(function(){launch();},2100);}
+    clearInterval(fauto);fauto=setInterval(function(){launch();
+      if(Math.random()<.4)shooters.push({x:Math.random()*fw.width*.6,
+        y:Math.random()*fw.height*.3,vx:7+Math.random()*4,
+        vy:2.5+Math.random()*2,life:40});},2100);}
   function stopNight(){if(fraf){cancelAnimationFrame(fraf);fraf=null;}
-    clearInterval(fauto);rockets=[];sparks=[];
+    clearInterval(fauto);rockets=[];sparks=[];shooters=[];
     if(fw.width)fx.clearRect(0,0,fw.width,fw.height);}
   function setNight(on){
     if(night===on)return;
@@ -539,6 +618,33 @@
     launch(e.clientX-r.left+(Math.random()-.5)*140);
   });
   addEventListener('resize',function(){if(fraf)fsize();});
+
+  /* ---------- AMBIENT EXTRAS: balloons, waves, sparkle trail ---------- */
+  setInterval(function(){
+    var b=document.createElement('span');b.className='bal';
+    b.textContent='🎈';
+    b.style.left=(4+Math.random()*90)+'%';
+    b.style.fontSize=(22+Math.random()*18)+'px';
+    b.style.filter='hue-rotate('+Math.floor(Math.random()*360)+'deg)';
+    b.style.animationDuration=(11+Math.random()*8)+'s';
+    scene.appendChild(b);
+    setTimeout(function(){b.remove();},20000);
+  },5200);
+  setInterval(function(){
+    if(busy())return;
+    var el=document.getElementById(Math.random()<.5?'sisA':'sisB');
+    el.classList.add('wave');
+    setTimeout(function(){el.classList.remove('wave');},2400);
+  },7600);
+  var lastSpk=0;
+  scene.addEventListener('pointermove',function(e){
+    var now=Date.now();if(now-lastSpk<70)return;lastSpk=now;
+    var s=document.createElement('span');s.className='spk';
+    s.textContent=Math.random()<.5?'✨':'⭐';
+    s.style.left=e.clientX+'px';s.style.top=e.clientY+'px';
+    document.body.appendChild(s);
+    setTimeout(function(){s.remove();},950);
+  });
 
   /* ---------- AUTO SHOW: everything plays by itself ---------- */
   var autoOn=false,autoTimer=null,step=0;
