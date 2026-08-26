@@ -76,14 +76,10 @@
   .hdr .k{font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:#7a6aa8;
     font-weight:700;transition:color 2s ease}
   .hdr h1{font-family:var(--script);font-weight:400;margin:8px 0 2px;line-height:1.05;
-    font-size:clamp(32px,6.5vw,58px);text-wrap:balance;
-    background:linear-gradient(90deg,#4a3a75 0%,#8a5ab0 30%,#c99b3f 50%,#8a5ab0 70%,#4a3a75 100%);
-    background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
-    animation:shimr 7s linear infinite}
-  @keyframes shimr{to{background-position:-300% 0}}
-  .scene.night .hdr h1{
-    background:linear-gradient(90deg,#ffe9c8 0%,#fff6e0 30%,#ffd88a 50%,#fff6e0 70%,#ffe9c8 100%);
-    background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent}
+    font-size:clamp(32px,6.5vw,58px);text-wrap:balance;color:#4a3a75;
+    transition:color 2s ease;animation:nameglow 3.5s ease-in-out infinite alternate}
+  @keyframes nameglow{from{text-shadow:0 0 0 rgba(201,155,63,0)}
+    to{text-shadow:0 2px 20px rgba(201,155,63,.6)}}
   .hdr .sub{font-family:var(--serif);font-style:italic;font-size:clamp(13px,2vw,17px);
     color:#6d6390;transition:color 2s ease}
   .hdr .tw{font-family:var(--serif);font-size:clamp(12px,1.9vw,15px);color:#8a7ab0;
@@ -329,6 +325,31 @@
     transition:opacity 2s ease}
   .scene.night .sis.a .aura9{opacity:1;animation:aurap 3s ease-in-out infinite alternate}
   @keyframes aurap{to{opacity:.55}}
+  /* gold-trimmed cap with a star */
+  .sis.a .cap9 .board{background:linear-gradient(135deg,#e8c06a,#c89238)}
+  .sis.a .cap9 .board::after{content:"";position:absolute;inset:3px;
+    clip-path:polygon(50% 0,100% 52%,50% 100%,0 52%);
+    background:linear-gradient(135deg,#2e3a5c,#1c2438)}
+  .sis.a .cap9 .band::after{content:"⭐";position:absolute;left:50%;bottom:0;
+    transform:translateX(-50%);font-size:8px}
+  /* sparkles woven in her hair */
+  .hsp9{position:absolute;font-size:9px;z-index:2;pointer-events:none;
+    animation:twinkA 2.2s ease-in-out infinite}
+  .hsp9.h1{top:6px;left:11px}
+  .hsp9.h2{top:15px;right:13px;animation-delay:-1s}
+  /* silky sheen sweeping her gown */
+  .sheen9{position:absolute;inset:0;z-index:1;pointer-events:none;
+    background:linear-gradient(115deg,transparent 32%,rgba(255,255,255,.17) 46%,transparent 60%);
+    background-size:250% 100%;animation:sheenmv 4.5s ease-in-out infinite}
+  @keyframes sheenmv{0%{background-position:130% 0}100%{background-position:-130% 0}}
+  /* her butterfly friend */
+  .bff9{position:absolute;top:74px;left:-28px;font-size:15px;z-index:7;pointer-events:none;
+    animation:bffly 7.5s ease-in-out infinite}
+  @keyframes bffly{0%{transform:translate(0,0) rotate(-10deg)}
+    25%{transform:translate(150px,-64px) rotate(12deg)}
+    50%{transform:translate(162px,26px) rotate(-8deg)}
+    75%{transform:translate(24px,-72px) rotate(10deg)}
+    100%{transform:translate(0,0) rotate(-10deg)}}
 
   /* ============ AMBIENT EXTRAS ============ */
   .bal{position:absolute;bottom:-70px;z-index:2;pointer-events:none;animation:balup linear forwards}
@@ -360,7 +381,7 @@
       transparent 57px,#ff9aa2 58px 63px,#ffd08a 64px 69px,#fdf3a8 70px 75px,
       #b8e6a8 76px 81px,#a8c8f0 82px 87px,#d0b0e8 88px 93px,transparent 94px)}
   .scene.night .rain9{opacity:0}
-  .plane9{position:absolute;top:88px;left:-300px;z-index:2;display:flex;align-items:center;
+  .plane9{position:absolute;top:44%;left:-300px;z-index:2;display:flex;align-items:center;
     gap:6px;animation:planefly 15s linear forwards;pointer-events:none}
   .plane9 .dv{font-size:22px;transform:scaleX(-1)}
   .plane9 .bnr{background:rgba(255,255,255,.92);color:#a83e6c;font-weight:800;font-size:11.5px;
@@ -373,23 +394,55 @@
 
   #confetti{position:fixed;inset:0;pointer-events:none;z-index:60}
 
-  /* ============ START OVERLAY ============ */
-  .start{position:fixed;inset:0;z-index:80;display:flex;flex-direction:column;gap:16px;
-    align-items:center;justify-content:center;text-align:center;padding:24px;
-    background:rgba(22,16,48,.58);backdrop-filter:blur(7px);transition:opacity .9s ease}
+  /* ============ START OVERLAY — THE INVITATION ============ */
+  .start{position:fixed;inset:0;z-index:80;display:flex;align-items:center;justify-content:center;
+    padding:22px;overflow:hidden;transition:opacity .9s ease;
+    background:radial-gradient(120% 90% at 50% 16%,#2a1b52 0%,#170f33 52%,#0b0820 100%)}
+  .start::before{content:"";position:absolute;left:50%;top:50%;width:200vmax;height:200vmax;
+    margin:-100vmax 0 0 -100vmax;pointer-events:none;
+    background:repeating-conic-gradient(from 0deg,rgba(240,205,122,.05) 0deg 8deg,transparent 8deg 30deg);
+    animation:rays 60s linear infinite}
+  @keyframes rays{to{transform:rotate(360deg)}}
   .start.gone{opacity:0;pointer-events:none}
-  .start .st{font-family:var(--script);font-size:clamp(38px,8vw,66px);color:#fff;line-height:1.05;
-    text-shadow:0 4px 30px rgba(0,0,0,.45)}
-  .start .ss{color:#e8dcff;font-family:var(--serif);font-style:italic;font-size:16px;margin-bottom:8px}
-  .sbtn{cursor:pointer;border:none;border-radius:999px;font-weight:800;font-size:17px;
-    padding:18px 38px;color:#241a08;background:linear-gradient(180deg,#f0cd7a,#d3a24e);
-    box-shadow:0 14px 40px rgba(211,162,78,.5);animation:startpulse 2.2s ease-in-out infinite;
-    transition:transform .15s ease}
+  .sframe{position:relative;text-align:center;max-width:470px;width:100%;
+    padding:38px 24px 30px;border:1.5px solid rgba(240,205,122,.55);border-radius:18px;
+    background:rgba(20,12,44,.6);
+    box-shadow:0 0 0 6px rgba(240,205,122,.08),0 30px 80px rgba(0,0,0,.6)}
+  .sframe::before,.sframe::after{content:"✦ ✦ ✦";position:absolute;left:50%;
+    transform:translateX(-50%);color:#f0cd7a;font-size:11px;letter-spacing:.5em;
+    background:#171034;padding:0 12px;white-space:nowrap}
+  .sframe::before{top:-8px}
+  .sframe::after{bottom:-8px}
+  .screst{font-size:46px;animation:crestbob 3s ease-in-out infinite}
+  @keyframes crestbob{0%,100%{transform:translateY(0) rotate(-5deg)}
+    50%{transform:translateY(-7px) rotate(5deg)}}
+  .sk2{font-size:11px;letter-spacing:.5em;color:#b9a3e0;text-transform:uppercase;
+    font-weight:700;margin-top:8px}
+  .st{font-family:var(--script);font-size:clamp(38px,8vw,58px);color:#f4d488;line-height:1.08;
+    margin:10px 0 0;text-shadow:0 2px 26px rgba(240,205,122,.5)}
+  .sar{font-family:var(--serif);font-size:clamp(17px,3.4vw,23px);color:#e8d4ff;
+    margin:8px 0 0;direction:rtl}
+  .sdiv{width:90px;height:1px;margin:14px auto;
+    background:linear-gradient(90deg,transparent,#c9a84c,transparent)}
+  .ss{color:#b9a8d8;font-family:var(--serif);font-style:italic;font-size:14px;margin:0 0 20px}
+  .sbtn{position:relative;overflow:hidden;cursor:pointer;border:none;border-radius:999px;
+    font-weight:800;font-size:17px;padding:18px 40px;color:#241a08;
+    background:linear-gradient(180deg,#f6dd94,#d3a24e);
+    box-shadow:0 14px 40px rgba(211,162,78,.45);
+    animation:startpulse 2.2s ease-in-out infinite;transition:transform .15s ease}
+  .sbtn::after{content:"";position:absolute;top:0;bottom:0;left:-70%;width:40%;
+    background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);
+    transform:skewX(-20deg);animation:btnsheen 2.8s ease-in-out infinite}
+  @keyframes btnsheen{0%,55%{left:-70%}100%{left:130%}}
   .sbtn:hover{transform:translateY(-2px)}
   .sbtn:focus-visible{outline:3px solid #fff;outline-offset:3px}
-  @keyframes startpulse{0%,100%{box-shadow:0 14px 40px rgba(211,162,78,.5),0 0 0 0 rgba(240,205,122,.55)}
-    50%{box-shadow:0 14px 40px rgba(211,162,78,.5),0 0 0 22px rgba(240,205,122,0)}}
-  .start .sn{color:#b9a3d8;font-size:12.5px;margin-top:6px}
+  @keyframes startpulse{0%,100%{box-shadow:0 14px 40px rgba(211,162,78,.45),0 0 0 0 rgba(240,205,122,.5)}
+    50%{box-shadow:0 14px 40px rgba(211,162,78,.45),0 0 0 22px rgba(240,205,122,0)}}
+  .sn{color:#8a76b8;font-size:12px;margin-top:14px}
+  .sp9{position:absolute;bottom:-10px;width:4px;height:4px;border-radius:50%;background:#f0cd7a;
+    box-shadow:0 0 8px 2px rgba(240,205,122,.55);animation:spfloat linear infinite}
+  @keyframes spfloat{0%{transform:translateY(0);opacity:0}12%{opacity:1}
+    85%{opacity:1}100%{transform:translateY(-105vh);opacity:0}}
 
   @media (prefers-reduced-motion:reduce){*{animation-duration:.001s!important;transition-duration:.001s!important}}
   @media (max-width:520px){
@@ -423,10 +476,23 @@
 <div class="flash9" id="flash" aria-hidden="true"></div>
 
 <div class="start" id="start">
-  <div class="st"><span data-name>Raneem</span> &amp; <span data-name2>Tasneem</span></div>
-  <div class="ss">A celebration is waiting for you…</div>
-  <button class="sbtn" id="startBtn">▶ Start the celebration</button>
-  <div class="sn">Music, dancing, fireworks — it all plays by itself</div>
+  <span class="sp9" style="left:8%;animation-duration:9s;animation-delay:-2s"></span>
+  <span class="sp9" style="left:20%;animation-duration:13s;animation-delay:-7s"></span>
+  <span class="sp9" style="left:34%;animation-duration:10s;animation-delay:-4s"></span>
+  <span class="sp9" style="left:52%;animation-duration:14s;animation-delay:-9s"></span>
+  <span class="sp9" style="left:68%;animation-duration:11s;animation-delay:-1s"></span>
+  <span class="sp9" style="left:82%;animation-duration:12s;animation-delay:-6s"></span>
+  <span class="sp9" style="left:93%;animation-duration:9.5s;animation-delay:-3s"></span>
+  <div class="sframe">
+    <div class="screst">🎓</div>
+    <div class="sk2">Class of 2026 · Graduation</div>
+    <div class="st">Raneem &amp; Tasneem</div>
+    <div class="sar">حفل تخرّج رنيم وتسنيم 🎓</div>
+    <div class="sdiv"></div>
+    <div class="ss">A celebration is waiting for you…</div>
+    <button class="sbtn" id="startBtn">▶ Start the celebration</button>
+    <div class="sn">Music · Fireworks · Dancing — it all plays by itself</div>
+  </div>
 </div>
 
 <section class="scene" id="scene">
@@ -459,8 +525,10 @@
         <span class="twk9 t2" style="top:64px;right:-16px">✨</span>
         <span class="twk9 t3" style="top:128px;left:-12px">✨</span>
         <div class="cap9"><div class="band"></div><div class="board"></div><div class="btnc"></div><div class="tass"></div></div>
+        <span class="bff9">🦋</span>
         <div class="head9"><div class="hair9"></div><div class="hairshine9"></div>
           <span class="flow9">🌸</span>
+          <span class="hsp9 h1">✦</span><span class="hsp9 h2">✦</span>
           <div class="shd9 sl"></div><div class="shd9 sr"></div>
           <div class="brow9 bl"></div><div class="brow9 br"></div>
           <div class="eyes9"><i></i><i></i></div><div class="nose9"></div>
@@ -468,7 +536,8 @@
           <div class="blush9 l"></div><div class="blush9 r"></div>
           <div class="earr9 el"></div><div class="earr9 er"></div></div>
         <div class="neck9"></div>
-        <div class="gown9"><div class="glit9"></div><div class="col9"></div><div class="medal9"></div>
+        <div class="gown9"><div class="glit9"></div><div class="sheen9"></div>
+          <div class="col9"></div><div class="medal9"></div>
           <div class="stole9"></div>
           <div class="sash9">2026</div><div class="arm9 l"></div>
           <div class="arm9 r"><span class="dip9">📜</span></div></div>
@@ -585,21 +654,58 @@
     var g=a.createGain();g.gain.value=.25;
     src.connect(g);g.connect(a.destination);src.start();
   }catch(e){}}
+  /* Arabian graduation music — maqam Hijaz (D), oud plucks + darbuka dum/tak */
   var musicOn=false,mTimer=null,barI=0;
-  var prog=[
-    [523.25,659.25,783.99,1046.5],
-    [440,523.25,659.25,880],
-    [349.23,440,523.25,698.46],
-    [392,493.88,587.33,783.99]
+  var HZ=[293.66,311.13,369.99,392.0,440.0,466.16,554.37,587.33]; /* D Eb F# G A Bb C# D */
+  var MEL=[
+    [0,1,2,3,4,null,4,null],
+    [5,4,3,2,3,null,null,null],
+    [4,5,6,7,6,5,4,null],
+    [3,2,1,0,0,null,2,3],
+    [4,null,4,5,4,3,2,null],
+    [1,2,3,null,2,1,0,null]
   ];
-  function playBar(){try{var a=ctxa(),notes=prog[barI++%prog.length],t0=a.currentTime+.05;
-    notes.forEach(function(f,i){
-      var o=a.createOscillator(),g=a.createGain(),t=t0+i*.42;
-      o.type='triangle';o.frequency.value=f;
-      g.gain.setValueAtTime(.0001,t);
-      g.gain.exponentialRampToValueAtTime(.11,t+.02);
-      g.gain.exponentialRampToValueAtTime(.0001,t+1.3);
-      o.connect(g);g.connect(a.destination);o.start(t);o.stop(t+1.4);});
+  var DRM=['d',null,'t','t','d',null,'t',null];
+  function pluck(a,f,t){
+    var o=a.createOscillator(),o2=a.createOscillator(),
+        g=a.createGain(),g2=a.createGain(),fl=a.createBiquadFilter();
+    o.type='triangle';o2.type='sawtooth';
+    o.frequency.setValueAtTime(f,t);
+    o.frequency.exponentialRampToValueAtTime(f*.994,t+.3);
+    o2.frequency.setValueAtTime(f*1.004,t);
+    fl.type='lowpass';fl.frequency.setValueAtTime(1700,t);
+    fl.frequency.exponentialRampToValueAtTime(520,t+.42);
+    g2.gain.value=.3;
+    g.gain.setValueAtTime(.0001,t);
+    g.gain.exponentialRampToValueAtTime(.15,t+.012);
+    g.gain.exponentialRampToValueAtTime(.0001,t+.55);
+    o.connect(fl);o2.connect(g2);g2.connect(fl);fl.connect(g);g.connect(a.destination);
+    o.start(t);o.stop(t+.6);o2.start(t);o2.stop(t+.6);
+  }
+  function dum(a,t){
+    var o=a.createOscillator(),g=a.createGain();
+    o.type='sine';o.frequency.setValueAtTime(150,t);
+    o.frequency.exponentialRampToValueAtTime(52,t+.12);
+    g.gain.setValueAtTime(.5,t);
+    g.gain.exponentialRampToValueAtTime(.001,t+.22);
+    o.connect(g);g.connect(a.destination);o.start(t);o.stop(t+.25);
+  }
+  function tak(a,t){
+    var buf=a.createBuffer(1,Math.floor(a.sampleRate*.05),a.sampleRate),
+        d=buf.getChannelData(0);
+    for(var i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*(1-i/d.length);
+    var s=a.createBufferSource();s.buffer=buf;
+    var f=a.createBiquadFilter();f.type='highpass';f.frequency.value=2600;
+    var g=a.createGain();g.gain.value=.22;
+    s.connect(f);f.connect(g);g.connect(a.destination);s.start(t);
+  }
+  function playBar(){try{
+    var a=ctxa(),t0=a.currentTime+.05,step=.24,
+        mel=MEL[barI%MEL.length];
+    for(var i=0;i<8;i++){var t=t0+i*step;
+      if(mel[i]!==null)pluck(a,HZ[mel[i]],t);
+      if(DRM[i]==='d')dum(a,t);else if(DRM[i]==='t')tak(a,t);}
+    barI++;
   }catch(e){}}
 
   /* ---------- sisters interactions ---------- */
@@ -632,7 +738,7 @@
   function doDance(){
     if(busy())return;
     sisters.classList.add('dance');hearts(6);
-    if(!musicOn){playBar();setTimeout(playBar,1700);}
+    if(!musicOn){playBar();setTimeout(playBar,1920);}
     setTimeout(function(){sisters.classList.remove('dance');},3350);
   }
   function doConf(){burst();chime();}
@@ -805,8 +911,8 @@
     startEl.classList.add('gone');
     try{ctxa();if(actx.state==='suspended')actx.resume();}catch(e){}
     musicOn=true;
-    clearInterval(mTimer);playBar();mTimer=setInterval(playBar,1700);
-    doConf();
+    clearInterval(mTimer);playBar();mTimer=setInterval(playBar,1920);
+    doConf();cheer();
     setAuto(true);
   });
 })();
