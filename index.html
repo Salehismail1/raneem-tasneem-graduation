@@ -173,17 +173,15 @@
   .bun9::after{content:"";position:absolute;bottom:-1px;left:50%;transform:translateX(-50%);
     width:20px;height:5px;border-radius:3px;background:#e8c06a}
   .sis.b .bun9{display:block}
-  .brow9{position:absolute;top:31px;width:13px;height:3.5px;border-radius:3px;background:#3a2415;z-index:2}
-  .brow9.bl{left:17px;transform:rotate(7deg)}
-  .brow9.br{right:17px;transform:rotate(-7deg)}
+  .brow9{position:absolute;top:28px;width:14px;height:7px;background:transparent;z-index:2;
+    border:2.5px solid transparent;border-top-color:#3a2415;border-radius:50% 50% 0 0}
+  .brow9.bl{left:15px;transform:rotate(-4deg)}
+  .brow9.br{right:15px;transform:rotate(4deg)}
   .eyes9{position:absolute;top:37px;left:0;right:0;display:flex;justify-content:center;gap:19px;z-index:2}
-  .eyes9 i{position:relative;width:10px;height:13px;background:#241407;border-radius:50%;
+  .eyes9 i{position:relative;width:11px;height:13px;background:#241407;border-radius:50%;
     animation:blink9 4.4s infinite}
-  .eyes9 i::after{content:"";position:absolute;top:2px;left:2.5px;width:3.5px;height:3.5px;
+  .eyes9 i::after{content:"";position:absolute;top:2px;left:2.5px;width:4px;height:4px;
     border-radius:50%;background:#fff}
-  .eyes9 i::before{content:"";position:absolute;top:-2px;right:-4px;width:6px;height:2px;
-    border-radius:2px;background:#241407;transform:rotate(-24deg)}
-  .eyes9 i:first-child::before{right:auto;left:-4px;transform:rotate(24deg)}
   .sis.b .eyes9 i{animation-delay:1.2s}
   @keyframes blink9{0%,90%,100%{transform:scaleY(1)}94%{transform:scaleY(.08)}}
   .glass9{position:absolute;top:34px;left:0;right:0;display:none;justify-content:center;gap:7px;z-index:3}
@@ -268,12 +266,14 @@
   .sis.a .hair9::before{border-radius:0 0 20px 9px}
   .sis.a .hair9::after{border-radius:0 0 9px 20px}
   .sis.a .hairback9{background:linear-gradient(180deg,#4a2f1d 0%,#5a3a22 52%,#8a5a2c 88%,#b87838 100%)}
-  /* dreamy eyes: warm iris, double sparkle, long lashes, eyeshadow */
+  /* dreamy happy eyes: warm iris, double sparkle */
   .sis.a .eyes9 i{width:12px;height:15px;
     background:radial-gradient(circle at 36% 32%,#7a4a20 0%,#3a2008 46%,#1c0f04 100%)}
-  .sis.a .eyes9 i::before{width:9px;height:2.5px}
-  .sis.a .eyes9 i::after{width:4.5px;height:4.5px;
-    box-shadow:4px 6px 0 -1.8px rgba(255,255,255,.75)}
+  .sis.a .eyes9 i::after{width:5px;height:5px;
+    box-shadow:4px 6px 0 -1.8px rgba(255,255,255,.8)}
+  .sis.a .brow9{border-top-color:#4a2f18}
+  .sis.a .brow9.bl{transform:rotate(-3deg) translateY(-1px)}
+  .sis.a .brow9.br{transform:rotate(3deg) translateY(-1px)}
   .shd9{position:absolute;top:34px;width:15px;height:6px;border-radius:50%;
     background:rgba(214,140,196,.38);z-index:1;filter:blur(.5px)}
   .shd9.sl{left:15px}.shd9.sr{right:15px}
@@ -381,16 +381,54 @@
       transparent 57px,#ff9aa2 58px 63px,#ffd08a 64px 69px,#fdf3a8 70px 75px,
       #b8e6a8 76px 81px,#a8c8f0 82px 87px,#d0b0e8 88px 93px,transparent 94px)}
   .scene.night .rain9{opacity:0}
-  .plane9{position:absolute;top:44%;left:-300px;z-index:2;display:flex;align-items:center;
-    gap:6px;animation:planefly 15s linear forwards;pointer-events:none}
-  .plane9 .dv{font-size:22px;transform:scaleX(-1)}
-  .plane9 .bnr{background:rgba(255,255,255,.92);color:#a83e6c;font-weight:800;font-size:11.5px;
-    letter-spacing:.14em;padding:5px 12px;border-radius:6px;white-space:nowrap;
-    box-shadow:0 4px 12px rgba(0,0,0,.15)}
-  @keyframes planefly{from{transform:translateX(0)}to{transform:translateX(calc(100vw + 340px))}}
+  .plane9{position:absolute;bottom:400px;left:-340px;z-index:5;display:flex;align-items:center;
+    gap:3px;animation:planefly 14s linear forwards;pointer-events:none;
+    filter:drop-shadow(0 6px 14px rgba(120,80,20,.22))}
+  .plane9 .dv{font-size:24px;animation:dvbob 1.6s ease-in-out infinite alternate}
+  @keyframes dvbob{from{transform:scaleX(-1) translateY(0)}to{transform:scaleX(-1) translateY(-6px)}}
+  .plane9 .rope{width:24px;height:1.5px;border-radius:2px;
+    background:linear-gradient(90deg,rgba(201,168,76,.15),#c9a84c)}
+  .plane9 .bnr{background:linear-gradient(180deg,#fffdf6,#f7ecd2);color:#a83e6c;
+    font-weight:800;font-size:12px;letter-spacing:.1em;padding:7px 16px;border-radius:999px;
+    border:1.5px solid #e0c27a;white-space:nowrap;
+    box-shadow:0 4px 14px rgba(160,120,40,.25);
+    animation:bnrbob 1.6s ease-in-out infinite alternate}
+  @keyframes bnrbob{from{transform:translateY(0)}to{transform:translateY(-5px)}}
+  @keyframes planefly{from{transform:translateX(0)}to{transform:translateX(calc(100vw + 380px))}}
   .flash9{position:fixed;inset:0;background:#fff;opacity:0;pointer-events:none;z-index:70;
     transition:opacity .13s ease}
   .flash9.on{opacity:.92}
+  /* rotating sun rays */
+  .sunrays{position:absolute;top:12px;right:20px;width:134px;height:134px;border-radius:50%;
+    z-index:1;opacity:.5;pointer-events:none;transition:opacity 2s ease;
+    background:repeating-conic-gradient(rgba(255,220,110,.32) 0deg 7deg,transparent 7deg 26deg);
+    animation:rays 30s linear infinite;
+    -webkit-mask:radial-gradient(circle,#000 28%,transparent 68%);
+    mask:radial-gradient(circle,#000 28%,transparent 68%)}
+  .scene.night .sunrays{opacity:0}
+  /* hanging fanoos lanterns at night */
+  .lant9{position:absolute;top:44px;font-size:26px;z-index:2;opacity:0;pointer-events:none;
+    transition:opacity 2s ease;transform-origin:top center;
+    animation:lantsw 4s ease-in-out infinite alternate}
+  .lant9::before{content:"";position:absolute;left:50%;top:-44px;width:1.5px;height:44px;
+    background:rgba(240,205,122,.55);transform:translateX(-50%)}
+  .lant9.l1{left:9%}
+  .lant9.l2{right:9%;animation-delay:-2s}
+  .scene.night .lant9{opacity:1}
+  @keyframes lantsw{from{transform:rotate(6deg)}to{transform:rotate(-6deg)}}
+  /* hopping visitor on the grass */
+  .bunw{position:absolute;bottom:54px;left:-70px;z-index:4;pointer-events:none;
+    animation:bunmove 13s linear forwards}
+  .bunw i{display:block;font-style:normal;font-size:20px;
+    animation:bunhop .55s ease-in-out infinite alternate}
+  @keyframes bunmove{to{transform:translateX(calc(100vw + 140px))}}
+  @keyframes bunhop{from{transform:translateY(0)}to{transform:translateY(-13px)}}
+  /* ladybug patrolling the flowers */
+  .lady9{position:absolute;bottom:44px;left:14%;font-size:12px;z-index:4;pointer-events:none;
+    animation:ladywalk 18s ease-in-out infinite alternate}
+  @keyframes ladywalk{0%{transform:translateX(0) rotate(0)}
+    50%{transform:translateX(95px) rotate(12deg)}
+    100%{transform:translateX(190px) rotate(-8deg)}}
 
   #confetti{position:fixed;inset:0;pointer-events:none;z-index:60}
 
@@ -460,6 +498,7 @@
     .tag9{font-size:21px;margin-top:4px}
     .grass{height:62px}
     .scene{padding-bottom:70px}
+    .plane9{bottom:330px}
   }
   @media (max-height:560px){
     .hdr .sub{display:none}
@@ -468,7 +507,7 @@
     .sis.a .schar{transform:scale(.62)}
     .sis.b .schar{transform:scale(.52)}
     .tag9{font-size:17px}
-    .tip{display:none}
+    .plane9{bottom:270px}
   }
 </style>
 
@@ -491,7 +530,6 @@
     <div class="sdiv"></div>
     <div class="ss">A celebration is waiting for you…</div>
     <button class="sbtn" id="startBtn">▶ Start the celebration</button>
-    <div class="sn">Music · Fireworks · Dancing — it all plays by itself</div>
   </div>
 </div>
 
@@ -499,8 +537,11 @@
   <div class="skyday"></div><div class="skynight"></div>
   <canvas id="nightfx"></canvas>
   <div class="bunt" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="sunrays" aria-hidden="true"></div>
   <div class="sun9" aria-hidden="true"></div>
   <div class="moon9" aria-hidden="true"></div>
+  <span class="lant9 l1" aria-hidden="true">🏮</span>
+  <span class="lant9 l2" aria-hidden="true">🏮</span>
   <div class="rain9" aria-hidden="true"></div>
   <div class="cloud9 c1" aria-hidden="true"></div>
   <div class="cloud9 c2" aria-hidden="true"></div>
@@ -562,8 +603,6 @@
     </div>
   </div>
 
-  <p class="tip rise d5" id="tip">Tap each sister to hear her ✨</p>
-
   <div class="grass" aria-hidden="true"></div>
   <div class="flowers" aria-hidden="true">
     <span>🌷</span><span>🌼</span><span>🌸</span><span>🌷</span><span>🌼</span>
@@ -575,6 +614,7 @@
   <span class="fly9 f2" aria-hidden="true" style="left:42%;bottom:124px"></span>
   <span class="fly9 f3" aria-hidden="true" style="left:62%;bottom:88px"></span>
   <span class="fly9 f4" aria-hidden="true" style="left:78%;bottom:134px"></span>
+  <span class="lady9" aria-hidden="true">🐞</span>
 </section>
 
 <script>
@@ -810,9 +850,6 @@
     if(night===on)return;
     night=on;
     scene.classList.toggle('night',night);
-    document.getElementById('tip').textContent=night
-      ?'Tap anywhere in the sky to launch more fireworks 🎆'
-      :'Tap each sister to hear her ✨';
     if(night){startNight();chime();}else stopNight();
   }
   scene.addEventListener('click',function(e){
@@ -856,17 +893,28 @@
       document.getElementById('sisA').classList.remove('wave');
       document.getElementById('sisB').classList.remove('wave');},2500);
   }
-  /* dove pulling congratulation banners */
-  var bnrTexts=['CONGRATS RANEEM & TASNEEM! 🎓','CLASS OF 2026 ✨','SO PROUD OF YOU BOTH 💛'];
+  /* dove pulling congratulation banners above their heads */
+  var bnrTexts=['مبروك التخرج رنيم وتسنيم 🎓','CLASS OF 2026 ✨','فخورين فيكم كتير 💛'];
   var bnrI=0;
   setInterval(function(){
     if(night)return;
     var p=document.createElement('div');p.className='plane9';
-    p.innerHTML='<span class="dv">🕊️</span><span class="bnr"></span>';
+    p.innerHTML='<span class="dv">🕊️</span><span class="rope"></span><span class="bnr"></span>';
     p.querySelector('.bnr').textContent=bnrTexts[bnrI++%bnrTexts.length];
     scene.appendChild(p);
-    setTimeout(function(){p.remove();},15500);
-  },21000);
+    setTimeout(function(){p.remove();},14500);
+  },19000);
+  /* hopping visitor crossing the grass */
+  var hoppers=['🐰','🐥','🐰','🦆'];
+  var hopI=0;
+  setInterval(function(){
+    var w=document.createElement('span');w.className='bunw';
+    w.innerHTML='<i></i>';
+    w.querySelector('i').textContent=hoppers[hopI++%hoppers.length];
+    w.style.animationDuration=(11+Math.random()*5)+'s';
+    scene.appendChild(w);
+    setTimeout(function(){w.remove();},17000);
+  },24000);
   var lastSpk=0;
   scene.addEventListener('pointermove',function(e){
     var now=Date.now();if(now-lastSpk<70)return;lastSpk=now;
