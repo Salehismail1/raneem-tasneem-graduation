@@ -17,7 +17,7 @@
     -webkit-font-smoothing:antialiased;line-height:1.5}
 
   /* ============ THE SCENE ============ */
-  .scene{position:relative;min-height:96vh;overflow:hidden;display:flex;
+  .scene{position:relative;min-height:100vh;overflow:hidden;display:flex;
     flex-direction:column;align-items:center;justify-content:space-between;
     padding:34px 16px 110px}
   .skyday,.skynight{position:absolute;inset:0;transition:opacity 2.2s ease}
@@ -95,7 +95,7 @@
 
   /* ============ THE SISTERS ============ */
   .sisters{display:flex;justify-content:center;gap:clamp(30px,8vw,100px);align-items:flex-end;
-    position:relative;z-index:4;margin:30px 0 14px}
+    position:relative;z-index:4;margin:auto 0 10px;padding-top:64px}
   .sis{display:flex;flex-direction:column;align-items:center;position:relative;cursor:pointer;
     animation:bob 3.2s ease-in-out infinite;transition:transform .7s cubic-bezier(.3,.9,.4,1)}
   .sis.b{animation-delay:-1.6s}
@@ -117,8 +117,12 @@
     border:8px solid transparent;border-top-color:#fff;border-bottom:0}
   .sis.talk .bub{transform:translateX(-50%) scale(1)}
 
-  .schar{position:relative;width:130px;height:212px}
-  .cap9{position:absolute;top:0;left:50%;transform:translateX(-50%);z-index:5;width:96px;height:40px}
+  .schar{position:relative;width:130px;height:226px}
+  .sis.a .schar{transform:scale(1.06);transform-origin:bottom center}
+  .sis.b .schar{transform:scale(.88);transform-origin:bottom center}
+  /* cap */
+  .cap9{position:absolute;top:0;left:50%;transform:translateX(-50%);z-index:6;width:96px;height:40px;
+    filter:drop-shadow(0 3px 3px rgba(0,0,0,.22))}
   .sisters.thrown .cap9{animation:capfly 2.2s cubic-bezier(.45,.15,.5,1) both}
   .sisters.thrown .sis.b .cap9{animation-delay:.14s}
   @keyframes capfly{0%{transform:translate(-50%,0) rotate(0)}
@@ -126,44 +130,90 @@
     78%{transform:translate(-50%,-30px) rotate(704deg)}
     89%{transform:translate(-50%,7px) rotate(717deg)}
     100%{transform:translate(-50%,0) rotate(720deg)}}
-  .cap9 .board{width:96px;height:34px;background:#232b44;
+  .cap9 .band{position:absolute;top:18px;left:50%;transform:translateX(-50%);width:58px;height:18px;
+    border-radius:9px;background:#1a2136}
+  .sis.b .cap9 .band{background:#3a1c33}
+  .cap9 .board{position:relative;width:96px;height:34px;
+    background:linear-gradient(135deg,#2e3a5c,#1c2438);
     clip-path:polygon(50% 0,100% 52%,50% 100%,0 52%)}
-  .sis.b .cap9 .board{background:#4a2440}
+  .sis.b .cap9 .board{background:linear-gradient(135deg,#5e2e50,#3f1f38)}
   .cap9 .btnc{position:absolute;left:50%;top:12px;transform:translateX(-50%);width:7px;height:7px;
-    border-radius:50%;background:#d8ac5a}
-  .cap9 .tass{position:absolute;left:50%;top:15px;width:2px;height:36px;background:#d8ac5a;
+    border-radius:50%;background:#f0cd7a}
+  .cap9 .tass{position:absolute;left:50%;top:15px;width:2px;height:38px;background:#e8c06a;
     transform-origin:top;animation:tass 2.6s ease-in-out infinite}
-  .cap9 .tass::after{content:"";position:absolute;bottom:-7px;left:-3px;width:8px;height:9px;
-    border-radius:3px;background:#d8ac5a}
+  .cap9 .tass::after{content:"";position:absolute;bottom:-8px;left:-3px;width:8px;height:10px;
+    border-radius:3px;background:#e8c06a}
   @keyframes tass{0%,100%{transform:rotate(10deg)}50%{transform:rotate(-10deg)}}
-  .head9{position:absolute;top:16px;left:50%;transform:translateX(-50%);width:76px;height:76px;
-    border-radius:50%;background:#f4cfa6;z-index:3}
-  .hair9{position:absolute;top:-7px;left:-7px;right:-7px;height:52%;border-radius:48px 48px 0 0;background:#3a281c}
-  .hair9::before,.hair9::after{content:"";position:absolute;top:16px;width:16px;height:66px;
-    border-radius:0 0 12px 12px;background:#3a281c}
-  .hair9::before{left:-3px}.hair9::after{right:-3px}
-  .sis.b .hair9,.sis.b .hair9::before,.sis.b .hair9::after{background:#1f150e}
-  .bun9{position:absolute;top:-15px;left:50%;transform:translateX(-50%);width:34px;height:26px;
-    border-radius:50%;background:#1f150e;display:none}
+  /* long back hair (Raneem) */
+  .hairback9{position:absolute;top:34px;left:50%;transform:translateX(-50%);width:102px;height:120px;
+    border-radius:46px 46px 34px 34px;background:linear-gradient(180deg,#4a2f1d,#3a2416);
+    z-index:1;display:none}
+  .sis.a .hairback9{display:block}
+  /* head & face */
+  .head9{position:absolute;top:22px;left:50%;transform:translateX(-50%);width:78px;height:80px;
+    border-radius:46%/48%;background:linear-gradient(180deg,#fbdcb8,#f3c79c);z-index:4}
+  .hair9{position:absolute;top:-8px;left:-8px;right:-8px;height:56%;border-radius:50px 50px 0 0;
+    background:linear-gradient(180deg,#5a3a22,#4a2f1d)}
+  .hair9::before,.hair9::after{content:"";position:absolute;top:18px;width:17px;height:94px;
+    border-radius:0 0 14px 14px;background:inherit}
+  .hair9::before{left:-2px}.hair9::after{right:-2px}
+  .sis.b .hair9{background:linear-gradient(180deg,#2a1c12,#1f150e)}
+  .sis.b .hair9::before,.sis.b .hair9::after{height:58px}
+  .hairshine9{position:absolute;top:1px;left:15px;width:28px;height:9px;border-radius:50%;
+    background:rgba(255,255,255,.16);transform:rotate(-14deg);z-index:2}
+  .bangs9{display:none;position:absolute;top:-3px;left:3px;right:3px;height:27px;z-index:1;
+    background:#241810;border-radius:36px 36px 46% 52%}
+  .sis.b .bangs9{display:block}
+  .bun9{position:absolute;top:-17px;left:50%;transform:translateX(-50%);width:36px;height:27px;
+    border-radius:50%;background:#241810;display:none}
+  .bun9::after{content:"";position:absolute;bottom:-1px;left:50%;transform:translateX(-50%);
+    width:20px;height:5px;border-radius:3px;background:#e8c06a}
   .sis.b .bun9{display:block}
-  .eyes9{position:absolute;top:38px;left:0;right:0;display:flex;justify-content:center;gap:20px}
-  .eyes9 i{width:8px;height:11px;background:#26160e;border-radius:50%;animation:blink9 4.4s infinite}
+  .brow9{position:absolute;top:31px;width:13px;height:3.5px;border-radius:3px;background:#3a2415;z-index:2}
+  .brow9.bl{left:17px;transform:rotate(7deg)}
+  .brow9.br{right:17px;transform:rotate(-7deg)}
+  .eyes9{position:absolute;top:37px;left:0;right:0;display:flex;justify-content:center;gap:19px;z-index:2}
+  .eyes9 i{position:relative;width:10px;height:13px;background:#241407;border-radius:50%;
+    animation:blink9 4.4s infinite}
+  .eyes9 i::after{content:"";position:absolute;top:2px;left:2.5px;width:3.5px;height:3.5px;
+    border-radius:50%;background:#fff}
+  .eyes9 i::before{content:"";position:absolute;top:-2px;right:-4px;width:6px;height:2px;
+    border-radius:2px;background:#241407;transform:rotate(-24deg)}
+  .eyes9 i:first-child::before{right:auto;left:-4px;transform:rotate(24deg)}
   .sis.b .eyes9 i{animation-delay:1.2s}
   @keyframes blink9{0%,90%,100%{transform:scaleY(1)}94%{transform:scaleY(.08)}}
-  .glass9{position:absolute;top:35px;left:0;right:0;display:none;justify-content:center;gap:3px;z-index:2}
+  .glass9{position:absolute;top:34px;left:0;right:0;display:none;justify-content:center;gap:7px;z-index:3}
   .sis.b .glass9{display:flex}
-  .glass9 i{width:19px;height:15px;border:2.5px solid #4a3350;border-radius:6px;
-    background:rgba(255,255,255,.3)}
-  .smile9{position:absolute;top:52px;left:50%;transform:translateX(-50%);width:20px;height:10px;
-    border-bottom:3px solid #b0603a;border-radius:0 0 20px 20px}
-  .blush9{position:absolute;top:49px;width:12px;height:6px;border-radius:50%;background:rgba(238,130,124,.55)}
-  .blush9.l{left:8px}.blush9.r{right:8px}
-  .gown9{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:118px;height:126px;
-    background:linear-gradient(180deg,#2c3860,#232b44);z-index:2;
+  .glass9 i{width:21px;height:17px;border:2.5px solid #6a4a86;border-radius:8px;
+    background:rgba(255,255,255,.22)}
+  .glass9::before{content:"";position:absolute;top:7px;left:50%;transform:translateX(-50%);
+    width:9px;height:2.5px;border-radius:2px;background:#6a4a86}
+  .nose9{position:absolute;top:51px;left:50%;transform:translateX(-50%);width:5px;height:4px;
+    border-radius:50%;background:#e8b58c;z-index:2}
+  .smile9{position:absolute;top:57px;left:50%;transform:translateX(-50%);width:18px;height:10px;
+    background:#9c4634;border-radius:0 0 18px 18px;overflow:hidden;z-index:2}
+  .smile9::after{content:"";position:absolute;bottom:-3px;left:3px;right:3px;height:6px;
+    border-radius:50%;background:#ef8f7d}
+  .blush9{position:absolute;top:53px;width:13px;height:7px;border-radius:50%;
+    background:rgba(240,130,124,.5);filter:blur(1px);z-index:2}
+  .blush9.l{left:7px}.blush9.r{right:7px}
+  .neck9{position:absolute;top:99px;left:50%;transform:translateX(-50%);width:16px;height:13px;
+    background:#f3c79c;z-index:3}
+  /* gown */
+  .gown9{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:118px;height:118px;
+    background:linear-gradient(180deg,#2e3a5c,#232b44);z-index:2;
     clip-path:polygon(26% 0,74% 0,100% 100%,0 100%);border-radius:0 0 14px 14px}
-  .sis.b .gown9{background:linear-gradient(180deg,#5c2c50,#4a2440)}
+  .sis.b .gown9{background:linear-gradient(180deg,#5e2e50,#4a2440)}
+  .gown9::after{content:"";position:absolute;bottom:0;left:0;right:0;height:7px;
+    background:#d8ac5a;opacity:.85}
+  .col9{position:absolute;top:0;left:50%;transform:translateX(-50%);width:30px;height:16px;
+    background:#fff;clip-path:polygon(0 0,100% 0,50% 100%)}
   .stole9{position:absolute;top:0;left:50%;transform:translateX(-50%);width:64px;height:58px;
-    clip-path:polygon(0 0,18% 0,50% 74%,82% 0,100% 0,50% 100%);background:#d8ac5a}
+    clip-path:polygon(0 0,18% 0,50% 74%,82% 0,100% 0,50% 100%);
+    background:linear-gradient(180deg,#eec66e,#c89238)}
+  .sash9{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);
+    font-family:var(--sans);font-weight:700;font-size:10px;letter-spacing:.22em;
+    color:#f0e0b0;opacity:.9}
   .arm9{position:absolute;top:12px;width:20px;height:58px;border-radius:12px;background:#232b44;
     transition:transform .5s ease;transform-origin:top center}
   .sis.b .arm9{background:#4a2440}
@@ -183,21 +233,8 @@
   @keyframes hfloat{0%{opacity:0;transform:translateY(0) scale(.6)}15%{opacity:1}
     100%{opacity:0;transform:translateY(-270px) scale(1.25) rotate(14deg)}}
 
-  /* ============ CONTROLS ============ */
-  .btnrow{position:relative;z-index:6;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
-    max-width:640px}
-  .act{cursor:pointer;border:none;border-radius:999px;font-weight:700;font-size:13.5px;
-    padding:12px 20px;background:rgba(255,255,255,.82);color:#4a3a75;
-    box-shadow:0 8px 22px rgba(70,50,110,.18);backdrop-filter:blur(4px);
-    transition:transform .15s ease,background .6s ease,color .6s ease}
-  .act:hover{transform:translateY(-2px)}
-  .act:active{transform:translateY(0)}
-  .act:focus-visible{outline:3px solid #fff;outline-offset:2px}
-  .act[aria-pressed="true"]{background:#4a3a75;color:#ffe9c8}
-  .scene.night .act{background:rgba(30,26,60,.8);color:#e8d4ff;box-shadow:0 8px 22px rgba(0,0,0,.4)}
-  .scene.night .act[aria-pressed="true"]{background:#ffe9c8;color:#3a2c55}
-  .tip{position:relative;z-index:5;margin-top:14px;font-size:12.5px;letter-spacing:.08em;
-    color:#8a7ab0;transition:color 2s ease}
+  .tip{position:relative;z-index:5;margin-top:10px;font-size:12.5px;letter-spacing:.08em;
+    color:#8a7ab0;transition:color 2s ease;text-align:center}
   .scene.night .tip{color:#9a86c8}
 
   /* ============ GROUND ============ */
@@ -239,20 +276,10 @@
     50%{box-shadow:0 14px 40px rgba(211,162,78,.5),0 0 0 22px rgba(240,205,122,0)}}
   .start .sn{color:#b9a3d8;font-size:12.5px;margin-top:6px}
 
-  /* ============ FOOTER BAR ============ */
-  .foot{max-width:760px;margin:0 auto;padding:26px 20px 46px;text-align:center}
-  .namebar{display:inline-flex;flex-wrap:wrap;align-items:center;gap:10px;justify-content:center;
-    padding:12px 18px;background:#fff;border:1px solid #e6dfd2;border-radius:14px;
-    box-shadow:0 6px 18px rgba(0,0,0,.05)}
-  .namebar label{font-size:12.5px;color:#8a8070;font-weight:700}
-  .namebar input{font-family:var(--serif);font-size:16px;padding:7px 11px;border:1px solid #e6dfd2;
-    border-radius:9px;background:#faf7f0;color:#3a332a;width:140px}
-  .namebar input:focus{outline:2px solid #b8863b;outline-offset:1px}
-  .foot p{font-size:13px;color:#8a8070;margin:16px 0 0;line-height:1.7}
-
   @media (prefers-reduced-motion:reduce){*{animation-duration:.001s!important;transition-duration:.001s!important}}
   @media (max-width:520px){
-    .schar{transform:scale(.82);transform-origin:bottom center}
+    .sis.a .schar{transform:scale(.88)}
+    .sis.b .schar{transform:scale(.73)}
     .hdr{margin-top:36px}
   }
 </style>
@@ -287,42 +314,40 @@
 
   <div class="sisters rise d4" id="sisters">
     <div class="sis a" id="sisA" tabindex="0" role="button" aria-label="Tap Raneem">
-      <div class="bub" aria-hidden="true">We did it! 🎓</div>
+      <div class="bub" aria-hidden="true">We did it, little sis! 💕</div>
       <div class="schar">
-        <div class="cap9"><div class="board"></div><div class="btnc"></div><div class="tass"></div></div>
-        <div class="head9"><div class="hair9"></div><div class="eyes9"><i></i><i></i></div>
+        <div class="hairback9"></div>
+        <div class="cap9"><div class="band"></div><div class="board"></div><div class="btnc"></div><div class="tass"></div></div>
+        <div class="head9"><div class="hair9"></div><div class="hairshine9"></div>
+          <div class="brow9 bl"></div><div class="brow9 br"></div>
+          <div class="eyes9"><i></i><i></i></div><div class="nose9"></div>
           <div class="smile9"></div><div class="blush9 l"></div><div class="blush9 r"></div></div>
-        <div class="gown9"><div class="stole9"></div><div class="arm9 l"></div>
+        <div class="neck9"></div>
+        <div class="gown9"><div class="col9"></div><div class="stole9"></div>
+          <div class="sash9">2026</div><div class="arm9 l"></div>
           <div class="arm9 r"><span class="dip9">📜</span></div></div>
       </div>
-      <div class="tag9"><span data-name>Raneem</span><small>Graduate</small></div>
+      <div class="tag9"><span data-name>Raneem</span><small>The big sister</small></div>
     </div>
     <div class="sis b" id="sisB" tabindex="0" role="button" aria-label="Tap Tasneem">
       <div class="bub" aria-hidden="true">Sisters forever 💜</div>
       <div class="schar">
-        <div class="cap9"><div class="board"></div><div class="btnc"></div><div class="tass"></div></div>
-        <div class="head9"><div class="bun9"></div><div class="hair9"></div>
+        <div class="cap9"><div class="band"></div><div class="board"></div><div class="btnc"></div><div class="tass"></div></div>
+        <div class="head9"><div class="bun9"></div><div class="hair9"></div><div class="bangs9"></div>
+          <div class="hairshine9"></div><div class="brow9 bl"></div><div class="brow9 br"></div>
           <div class="eyes9"><i></i><i></i></div><div class="glass9"><i></i><i></i></div>
-          <div class="smile9"></div><div class="blush9 l"></div><div class="blush9 r"></div></div>
-        <div class="gown9"><div class="stole9"></div><div class="arm9 l"></div>
+          <div class="nose9"></div><div class="smile9"></div>
+          <div class="blush9 l"></div><div class="blush9 r"></div></div>
+        <div class="neck9"></div>
+        <div class="gown9"><div class="col9"></div><div class="stole9"></div>
+          <div class="sash9">2026</div><div class="arm9 l"></div>
           <div class="arm9 r"><span class="dip9">📜</span></div></div>
       </div>
-      <div class="tag9"><span data-name2>Tasneem</span><small>Graduate</small></div>
+      <div class="tag9"><span data-name2>Tasneem</span><small>The little sister</small></div>
     </div>
   </div>
 
-  <div>
-    <div class="btnrow rise d5">
-      <button class="act" id="capsBtn">🎓 Throw the caps</button>
-      <button class="act" id="hugBtn">🤗 Group hug</button>
-      <button class="act" id="danceBtn">💃 Dance</button>
-      <button class="act" id="confBtn">🎉 Confetti</button>
-      <button class="act" id="nightBtn" aria-pressed="false">🌙 Night finale</button>
-      <button class="act" id="musicBtn" aria-pressed="false">🎵 Music</button>
-      <button class="act" id="autoBtn" aria-pressed="true">⏸ Pause the show</button>
-    </div>
-    <p class="tip rise d5" id="tip">The show plays by itself — tap the sisters anytime to hear them ✨</p>
-  </div>
+  <p class="tip rise d5" id="tip">Tap each sister to hear her ✨</p>
 
   <div class="grass" aria-hidden="true"></div>
   <div class="flowers" aria-hidden="true">
@@ -333,27 +358,8 @@
   <span class="bfly f2" aria-hidden="true" style="left:58%">🦋</span>
 </section>
 
-<footer class="foot">
-  <div class="namebar">
-    <label for="nm">Sister 1</label>
-    <input id="nm" type="text" value="Raneem" autocomplete="off" aria-label="First graduate's name">
-    <label for="nm2">Sister 2</label>
-    <input id="nm2" type="text" value="Tasneem" autocomplete="off" aria-label="Second graduate's name">
-  </div>
-  <p>Made with love for two graduates. 💛 At night, tap anywhere in the sky to launch extra fireworks.</p>
-</footer>
-
 <script>
 (function(){
-  /* ---------- names ---------- */
-  var nm=document.getElementById('nm'),nm2=document.getElementById('nm2');
-  function paint(){
-    var v1=nm.value.trim()||'Raneem',v2=nm2.value.trim()||'Tasneem';
-    document.querySelectorAll('[data-name]').forEach(function(e){e.textContent=v1});
-    document.querySelectorAll('[data-name2]').forEach(function(e){e.textContent=v2});
-  }
-  nm.addEventListener('input',paint);nm2.addEventListener('input',paint);paint();
-
   /* ---------- typewriter dedication ---------- */
   var twEl=document.getElementById('tw'),twTimer=null,li=0;
   var lines=[
@@ -426,14 +432,6 @@
       g.gain.exponentialRampToValueAtTime(.0001,t+1.3);
       o.connect(g);g.connect(a.destination);o.start(t);o.stop(t+1.4);});
   }catch(e){}}
-  var musicBtn=document.getElementById('musicBtn');
-  musicBtn.addEventListener('click',function(){
-    musicOn=!musicOn;
-    musicBtn.setAttribute('aria-pressed',String(musicOn));
-    musicBtn.textContent=musicOn?'🔇 Stop music':'🎵 Music';
-    clearInterval(mTimer);
-    if(musicOn){playBar();mTimer=setInterval(playBar,1700);}
-  });
 
   /* ---------- sisters interactions ---------- */
   var sisters=document.getElementById('sisters');
@@ -469,14 +467,10 @@
     setTimeout(function(){sisters.classList.remove('dance');},3350);
   }
   function doConf(){burst();chime();}
-  document.getElementById('capsBtn').addEventListener('click',doCaps);
-  document.getElementById('hugBtn').addEventListener('click',doHug);
-  document.getElementById('danceBtn').addEventListener('click',doDance);
-  document.getElementById('confBtn').addEventListener('click',doConf);
   var talkFns={};
   var phrases={
-    sisA:['We did it! 🎓','Thank you, family! 💛','I can’t believe it!','Best day ever ✨'],
-    sisB:['Sisters forever 💜','Dream achieved! ✨','So proud of us!','We made it together 🎓']
+    sisA:['We did it, little sis! 💕','Thank you, family! 💛','So proud of us, Tasneem!','Best day ever ✨'],
+    sisB:['I followed my big sister 🎓','Sisters forever 💜','Dream achieved! ✨','We made it together!']
   };
   ['sisA','sisB'].forEach(function(id){
     var el=document.getElementById(id),bub=el.querySelector('.bub'),pi=0,tmr=null;
@@ -494,7 +488,6 @@
 
   /* ---------- night finale: stars + fireworks ---------- */
   var scene=document.getElementById('scene'),
-      nightBtn=document.getElementById('nightBtn'),
       fw=document.getElementById('nightfx'),fx=fw.getContext('2d'),
       night=false,stars=[],rockets=[],sparks=[],fraf=null,fauto=null;
   function fsize(){var r=scene.getBoundingClientRect();fw.width=r.width;fw.height=r.height;
@@ -533,14 +526,11 @@
     if(night===on)return;
     night=on;
     scene.classList.toggle('night',night);
-    nightBtn.setAttribute('aria-pressed',String(night));
-    nightBtn.textContent=night?'☀️ Back to day':'🌙 Night finale';
     document.getElementById('tip').textContent=night
       ?'Tap anywhere in the sky to launch more fireworks 🎆'
-      :'The show plays by itself — tap the sisters anytime to hear them ✨';
+      :'Tap each sister to hear her ✨';
     if(night){startNight();chime();}else stopNight();
   }
-  nightBtn.addEventListener('click',function(){setNight(!night);});
   scene.addEventListener('click',function(e){
     if(!night)return;
     if(e.target.closest('.sis')||e.target.closest('button')||e.target.closest('input'))return;
@@ -575,15 +565,7 @@
       nextStep();
     },s.t);
   }
-  var autoBtn=document.getElementById('autoBtn');
-  function setAuto(on){
-    autoOn=on;
-    autoBtn.setAttribute('aria-pressed',String(on));
-    autoBtn.textContent=on?'⏸ Pause the show':'▶ Resume the show';
-    clearTimeout(autoTimer);
-    if(on)nextStep();
-  }
-  autoBtn.addEventListener('click',function(){setAuto(!autoOn);});
+  function setAuto(on){autoOn=on;clearTimeout(autoTimer);if(on)nextStep();}
 
   /* ---------- START OVERLAY: one tap unlocks sound, then all auto ---------- */
   var startEl=document.getElementById('start');
@@ -591,8 +573,6 @@
     startEl.classList.add('gone');
     try{ctxa();if(actx.state==='suspended')actx.resume();}catch(e){}
     musicOn=true;
-    musicBtn.setAttribute('aria-pressed','true');
-    musicBtn.textContent='🔇 Stop music';
     clearInterval(mTimer);playBar();mTimer=setInterval(playBar,1700);
     doConf();
     setAuto(true);
