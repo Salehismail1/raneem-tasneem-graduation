@@ -33,8 +33,7 @@
   .sun9,.moon9{position:absolute;top:44px;right:52px;width:70px;height:70px;border-radius:50%;
     z-index:2;transition:opacity 2s ease,transform 2s ease}
   .sun9{background:radial-gradient(circle at 40% 36%,#fff3c8,#ffd35c);
-    box-shadow:0 0 46px rgba(255,211,92,.85);animation:sunpulse 4s ease-in-out infinite alternate}
-  @keyframes sunpulse{to{box-shadow:0 0 72px rgba(255,211,92,1)}}
+    box-shadow:0 0 52px rgba(255,211,92,.9)}
   .moon9{background:radial-gradient(circle at 42% 38%,#fdfbf2,#d8d4e8);
     box-shadow:0 0 40px rgba(220,215,255,.6);opacity:0;transform:translateY(26px)}
   .moon9::before{content:"";position:absolute;left:14px;top:20px;width:12px;height:12px;
@@ -77,9 +76,7 @@
     font-weight:700;transition:color 2s ease}
   .hdr h1{font-family:var(--script);font-weight:400;margin:8px 0 2px;line-height:1.05;
     font-size:clamp(32px,6.5vw,58px);text-wrap:balance;color:#4a3a75;
-    transition:color 2s ease;animation:nameglow 3.5s ease-in-out infinite alternate}
-  @keyframes nameglow{from{text-shadow:0 0 0 rgba(201,155,63,0)}
-    to{text-shadow:0 2px 20px rgba(201,155,63,.6)}}
+    transition:color 2s ease;text-shadow:0 2px 18px rgba(201,155,63,.45)}
   .hdr .sub{font-family:var(--serif);font-style:italic;font-size:clamp(13px,2vw,17px);
     color:#6d6390;transition:color 2s ease}
   .hdr .tw{font-family:var(--serif);font-size:clamp(12px,1.9vw,15px);color:#8a7ab0;
@@ -125,8 +122,7 @@
   .sis.a .schar{transform:scale(.98);transform-origin:bottom center}
   .sis.b .schar{transform:scale(.82);transform-origin:bottom center}
   /* cap */
-  .cap9{position:absolute;top:0;left:50%;transform:translateX(-50%);z-index:6;width:96px;height:40px;
-    filter:drop-shadow(0 3px 3px rgba(0,0,0,.22))}
+  .cap9{position:absolute;top:0;left:50%;transform:translateX(-50%);z-index:6;width:96px;height:40px}
   .sisters.thrown .cap9{animation:capfly 2.2s cubic-bezier(.45,.15,.5,1) both}
   .sisters.thrown .sis.b .cap9{animation-delay:.14s}
   @keyframes capfly{0%{transform:translate(-50%,0) rotate(0)}
@@ -356,18 +352,20 @@
   @keyframes balup{0%{transform:translate(0,0)}25%{transform:translate(16px,-28vh)}
     50%{transform:translate(-12px,-56vh)}75%{transform:translate(14px,-84vh)}
     100%{transform:translate(0,-118vh)}}
-  .fly9{position:absolute;width:5px;height:5px;border-radius:50%;background:#ffe98a;z-index:3;
+  .fly9{position:absolute;width:6px;height:6px;border-radius:50%;background:#ffe98a;z-index:3;
     opacity:0;transition:opacity 2s ease;pointer-events:none;
-    animation:flywander 11s ease-in-out infinite alternate,flypulse 1.6s ease-in-out infinite}
+    box-shadow:0 0 10px 3px rgba(255,233,138,.8);
+    animation:flywander 11s ease-in-out infinite alternate}
+  .fly9::after{content:"";position:absolute;inset:-2px;border-radius:50%;
+    background:rgba(255,233,138,.5);animation:flypulse 1.6s ease-in-out infinite}
   .scene.night .fly9{opacity:.9}
-  .fly9.f2{animation-duration:14s,2.1s;animation-delay:-6s,0s}
-  .fly9.f3{animation-duration:9s,1.3s;animation-delay:-3s,-.5s}
-  .fly9.f4{animation-duration:16s,1.9s;animation-delay:-10s,-.8s}
+  .fly9.f2{animation-duration:14s;animation-delay:-6s}
+  .fly9.f3{animation-duration:9s;animation-delay:-3s}
+  .fly9.f4{animation-duration:16s;animation-delay:-10s}
   @keyframes flywander{0%{transform:translate(0,0)}25%{transform:translate(70px,-50px)}
     50%{transform:translate(150px,-14px)}75%{transform:translate(80px,-70px)}
     100%{transform:translate(190px,-30px)}}
-  @keyframes flypulse{0%,100%{box-shadow:0 0 4px 1px rgba(255,233,138,.4)}
-    50%{box-shadow:0 0 13px 4px rgba(255,233,138,.95)}}
+  @keyframes flypulse{0%,100%{transform:scale(.5);opacity:.3}50%{transform:scale(1.6);opacity:1}}
   .spk{position:fixed;z-index:55;pointer-events:none;font-size:13px;
     animation:spkfade .9s ease-out forwards}
   @keyframes spkfade{0%{opacity:1;transform:translate(-50%,-50%) scale(.6)}
@@ -382,8 +380,7 @@
       #b8e6a8 76px 81px,#a8c8f0 82px 87px,#d0b0e8 88px 93px,transparent 94px)}
   .scene.night .rain9{opacity:0}
   .plane9{position:absolute;bottom:400px;left:-340px;z-index:5;display:flex;align-items:center;
-    gap:3px;animation:planefly 14s linear forwards;pointer-events:none;
-    filter:drop-shadow(0 6px 14px rgba(120,80,20,.22))}
+    gap:3px;animation:planefly 14s linear forwards;pointer-events:none;will-change:transform}
   .plane9 .dv{font-size:24px;animation:dvbob 1.6s ease-in-out infinite alternate}
   @keyframes dvbob{from{transform:scaleX(-1) translateY(0)}to{transform:scaleX(-1) translateY(-6px)}}
   .plane9 .rope{width:24px;height:1.5px;border-radius:2px;
@@ -402,7 +399,7 @@
   .sunrays{position:absolute;top:12px;right:20px;width:134px;height:134px;border-radius:50%;
     z-index:1;opacity:.5;pointer-events:none;transition:opacity 2s ease;
     background:repeating-conic-gradient(rgba(255,220,110,.32) 0deg 7deg,transparent 7deg 26deg);
-    animation:rays 30s linear infinite;
+    animation:rays 48s linear infinite;will-change:transform;
     -webkit-mask:radial-gradient(circle,#000 28%,transparent 68%);
     mask:radial-gradient(circle,#000 28%,transparent 68%)}
   .scene.night .sunrays{opacity:0}
@@ -644,7 +641,7 @@
   var pal=['#5c4a8a','#a83e6c','#8ea2ff','#f6c9db','#f0cd7a','#8aa554','#fff'];
   function burst(ox,oy){
     ox=ox||innerWidth/2;oy=oy||innerHeight*0.3;
-    for(var i=0;i<170;i++){parts.push({
+    for(var i=0;i<140;i++){parts.push({
       x:ox+(Math.random()-.5)*280,y:oy,
       vx:(Math.random()-.5)*12,vy:Math.random()*-15-4,g:.32+Math.random()*.2,
       s:5+Math.random()*7,r:Math.random()*6.28,vr:(Math.random()-.5)*.4,
@@ -806,12 +803,12 @@
       fw=document.getElementById('nightfx'),fx=fw.getContext('2d'),
       night=false,stars=[],rockets=[],sparks=[],shooters=[],fraf=null,fauto=null;
   function fsize(){var r=scene.getBoundingClientRect();fw.width=r.width;fw.height=r.height;
-    stars=[];for(var i=0;i<150;i++)stars.push({x:Math.random()*fw.width,
+    stars=[];for(var i=0;i<105;i++)stars.push({x:Math.random()*fw.width,
       y:Math.random()*fw.height*.75,z:Math.random(),twk:Math.random()*6.28});}
   function launch(x){rockets.push({x:x!==undefined?x:fw.width*(0.12+Math.random()*0.76),
     y:fw.height,vy:-(7.5+Math.random()*4),hue:Math.floor(Math.random()*360),
     targetY:fw.height*(0.12+Math.random()*0.3)});}
-  function explode(r){for(var i=0;i<72;i++){var a=Math.random()*6.28,spd=Math.random()*4.6+1;
+  function explode(r){for(var i=0;i<54;i++){var a=Math.random()*6.28,spd=Math.random()*4.6+1;
     sparks.push({x:r.x,y:r.y,vx:Math.cos(a)*spd,vy:Math.sin(a)*spd,
       life:60+Math.random()*30,hue:r.hue});}}
   function fdraw(){
@@ -871,7 +868,7 @@
     b.style.animationDuration=(11+Math.random()*8)+'s';
     scene.appendChild(b);
     setTimeout(function(){b.remove();},20000);
-  },5200);
+  },7000);
   setInterval(function(){
     if(busy())return;
     var el=document.getElementById(Math.random()<.5?'sisA':'sisB');
@@ -917,7 +914,7 @@
   },24000);
   var lastSpk=0;
   scene.addEventListener('pointermove',function(e){
-    var now=Date.now();if(now-lastSpk<70)return;lastSpk=now;
+    var now=Date.now();if(now-lastSpk<110)return;lastSpk=now;
     var s=document.createElement('span');s.className='spk';
     s.textContent=Math.random()<.5?'✨':'⭐';
     s.style.left=e.clientX+'px';s.style.top=e.clientY+'px';
