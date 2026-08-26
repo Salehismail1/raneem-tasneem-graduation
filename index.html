@@ -76,7 +76,14 @@
   .hdr .k{font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:#7a6aa8;
     font-weight:700;transition:color 2s ease}
   .hdr h1{font-family:var(--script);font-weight:400;margin:8px 0 2px;line-height:1.05;
-    font-size:clamp(32px,6.5vw,58px);color:#4a3a75;transition:color 2s ease;text-wrap:balance}
+    font-size:clamp(32px,6.5vw,58px);text-wrap:balance;
+    background:linear-gradient(90deg,#4a3a75 0%,#8a5ab0 30%,#c99b3f 50%,#8a5ab0 70%,#4a3a75 100%);
+    background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
+    animation:shimr 7s linear infinite}
+  @keyframes shimr{to{background-position:-300% 0}}
+  .scene.night .hdr h1{
+    background:linear-gradient(90deg,#ffe9c8 0%,#fff6e0 30%,#ffd88a 50%,#fff6e0 70%,#ffe9c8 100%);
+    background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent}
   .hdr .sub{font-family:var(--serif);font-style:italic;font-size:clamp(13px,2vw,17px);
     color:#6d6390;transition:color 2s ease}
   .hdr .tw{font-family:var(--serif);font-size:clamp(12px,1.9vw,15px);color:#8a7ab0;
@@ -257,21 +264,71 @@
   .scene.night .bfly{opacity:0;transition:opacity 1.5s}
   .bfly{transition:opacity 1.5s}
 
-  /* ============ RANEEM'S EXTRA BEAUTY ============ */
-  .sis.a .eyes9 i{width:11px;height:14px}
-  .sis.a .eyes9 i::before{width:8px;height:2.5px}
-  .sis.a .eyes9 i::after{width:4px;height:4px}
-  .sis.a .smile9{background:#c04a52}
+  /* ============ RANEEM'S GLOW-UP ============ */
+  /* silky ombre hair with golden tips */
+  .sis.a .hair9{background:linear-gradient(180deg,#5f3d22,#4e3220)}
+  .sis.a .hair9::before,.sis.a .hair9::after{
+    background:linear-gradient(180deg,#5a3a22 0%,#6b4526 50%,#a06a34 82%,#c88a44 100%)}
+  .sis.a .hair9::before{border-radius:0 0 20px 9px}
+  .sis.a .hair9::after{border-radius:0 0 9px 20px}
+  .sis.a .hairback9{background:linear-gradient(180deg,#4a2f1d 0%,#5a3a22 52%,#8a5a2c 88%,#b87838 100%)}
+  /* dreamy eyes: warm iris, double sparkle, long lashes, eyeshadow */
+  .sis.a .eyes9 i{width:12px;height:15px;
+    background:radial-gradient(circle at 36% 32%,#7a4a20 0%,#3a2008 46%,#1c0f04 100%)}
+  .sis.a .eyes9 i::before{width:9px;height:2.5px}
+  .sis.a .eyes9 i::after{width:4.5px;height:4.5px;
+    box-shadow:4px 6px 0 -1.8px rgba(255,255,255,.75)}
+  .shd9{position:absolute;top:34px;width:15px;height:6px;border-radius:50%;
+    background:rgba(214,140,196,.38);z-index:1;filter:blur(.5px)}
+  .shd9.sl{left:15px}.shd9.sr{right:15px}
+  /* glossy lips + dimples */
+  .sis.a .smile9{background:linear-gradient(180deg,#d05a64,#b03a48)}
   .sis.a .smile9::after{background:#f2a2a2}
+  .sis.a .smile9::before{content:"";position:absolute;top:1px;left:4px;width:5px;height:2.5px;
+    border-radius:50%;background:rgba(255,255,255,.55);z-index:2}
+  .dmp9{position:absolute;top:60px;width:3px;height:3px;border-radius:50%;
+    background:rgba(200,110,84,.55);z-index:2}
+  .dmp9.dl{left:19px}.dmp9.dr{right:19px}
   .sis.a .blush9{background:rgba(244,120,140,.55)}
+  /* flower, earrings, honor medal */
   .flow9{position:absolute;top:4px;right:-2px;font-size:16px;z-index:5;
     transform:rotate(18deg);animation:flowtw 3.4s ease-in-out infinite alternate}
   @keyframes flowtw{to{transform:rotate(6deg) scale(1.1)}}
-  .nl9{position:absolute;top:15px;left:50%;transform:translateX(-50%);width:20px;height:9px;
-    border:2px solid #f0cd7a;border-top:none;border-radius:0 0 11px 11px;display:none}
-  .nl9::after{content:"";position:absolute;bottom:-4px;left:50%;transform:translateX(-50%);
-    width:5px;height:5px;border-radius:50%;background:#f0cd7a}
-  .sis.a .nl9{display:block}
+  .earr9{position:absolute;top:58px;width:5px;height:5px;border-radius:50%;
+    background:#f0cd7a;z-index:5;box-shadow:0 7px 0 -1px #f0cd7a}
+  .earr9.el{left:-1px}.earr9.er{right:-1px}
+  .medal9{position:absolute;top:11px;left:50%;transform:translateX(-50%);
+    width:26px;height:22px;z-index:2}
+  .medal9::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
+    width:22px;height:10px;background:#c03a4a;clip-path:polygon(0 0,100% 0,50% 100%)}
+  .medal9::after{content:"★";position:absolute;top:7px;left:50%;transform:translateX(-50%);
+    width:14px;height:14px;border-radius:50%;font-size:8px;line-height:14px;text-align:center;
+    color:#8a5a12;background:radial-gradient(circle at 35% 30%,#ffe9a8,#d8a83c);
+    box-shadow:0 2px 5px rgba(0,0,0,.3)}
+  /* sparkling gown */
+  .sis.a .gown9{background:linear-gradient(180deg,#33406a,#252e4e)}
+  .glit9{position:absolute;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(circle 1.5px at 20% 42%,rgba(255,255,255,.85) 98%,transparent),
+      radial-gradient(circle 1px at 70% 60%,rgba(255,230,160,.9) 98%,transparent),
+      radial-gradient(circle 1.5px at 45% 76%,rgba(255,255,255,.7) 98%,transparent),
+      radial-gradient(circle 1px at 82% 32%,rgba(255,230,160,.85) 98%,transparent),
+      radial-gradient(circle 1px at 30% 88%,rgba(255,255,255,.8) 98%,transparent),
+      radial-gradient(circle 1px at 58% 50%,rgba(255,255,255,.75) 98%,transparent);
+    animation:glitb 2.4s ease-in-out infinite alternate}
+  @keyframes glitb{from{opacity:.3}to{opacity:1}}
+  /* twinkles orbiting her + night aura */
+  .twk9{position:absolute;font-size:12px;z-index:6;pointer-events:none;
+    animation:twinkA 2.6s ease-in-out infinite}
+  .twk9.t2{animation-delay:-1.1s;font-size:10px}
+  .twk9.t3{animation-delay:-1.9s;font-size:11px}
+  @keyframes twinkA{0%,100%{opacity:0;transform:scale(.5) rotate(0)}
+    50%{opacity:1;transform:scale(1.15) rotate(24deg)}}
+  .aura9{position:absolute;left:50%;top:56%;transform:translate(-50%,-50%);
+    width:180px;height:240px;border-radius:50%;z-index:0;pointer-events:none;opacity:0;
+    background:radial-gradient(closest-side,rgba(255,220,150,.3),transparent);
+    transition:opacity 2s ease}
+  .scene.night .sis.a .aura9{opacity:1;animation:aurap 3s ease-in-out infinite alternate}
+  @keyframes aurap{to{opacity:.55}}
 
   /* ============ AMBIENT EXTRAS ============ */
   .bal{position:absolute;bottom:-70px;z-index:2;pointer-events:none;animation:balup linear forwards}
@@ -297,6 +354,22 @@
   .sis.wave .arm9.r{animation:wavearm 1.1s ease-in-out 2}
   @keyframes wavearm{0%,100%{transform:rotate(-14deg)}45%{transform:rotate(-158deg)}
     70%{transform:rotate(-128deg)}}
+  .rain9{position:absolute;left:5%;top:110px;width:250px;height:96px;z-index:1;
+    opacity:.45;pointer-events:none;transition:opacity 2s ease;
+    background:radial-gradient(circle at 50% 100%,
+      transparent 57px,#ff9aa2 58px 63px,#ffd08a 64px 69px,#fdf3a8 70px 75px,
+      #b8e6a8 76px 81px,#a8c8f0 82px 87px,#d0b0e8 88px 93px,transparent 94px)}
+  .scene.night .rain9{opacity:0}
+  .plane9{position:absolute;top:88px;left:-300px;z-index:2;display:flex;align-items:center;
+    gap:6px;animation:planefly 15s linear forwards;pointer-events:none}
+  .plane9 .dv{font-size:22px;transform:scaleX(-1)}
+  .plane9 .bnr{background:rgba(255,255,255,.92);color:#a83e6c;font-weight:800;font-size:11.5px;
+    letter-spacing:.14em;padding:5px 12px;border-radius:6px;white-space:nowrap;
+    box-shadow:0 4px 12px rgba(0,0,0,.15)}
+  @keyframes planefly{from{transform:translateX(0)}to{transform:translateX(calc(100vw + 340px))}}
+  .flash9{position:fixed;inset:0;background:#fff;opacity:0;pointer-events:none;z-index:70;
+    transition:opacity .13s ease}
+  .flash9.on{opacity:.92}
 
   #confetti{position:fixed;inset:0;pointer-events:none;z-index:60}
 
@@ -347,6 +420,7 @@
 </style>
 
 <canvas id="confetti"></canvas>
+<div class="flash9" id="flash" aria-hidden="true"></div>
 
 <div class="start" id="start">
   <div class="st"><span data-name>Raneem</span> &amp; <span data-name2>Tasneem</span></div>
@@ -361,6 +435,7 @@
   <div class="bunt" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
   <div class="sun9" aria-hidden="true"></div>
   <div class="moon9" aria-hidden="true"></div>
+  <div class="rain9" aria-hidden="true"></div>
   <div class="cloud9 c1" aria-hidden="true"></div>
   <div class="cloud9 c2" aria-hidden="true"></div>
   <div class="cloud9 c3" aria-hidden="true"></div>
@@ -378,15 +453,23 @@
     <div class="sis a" id="sisA" tabindex="0" role="button" aria-label="Tap Raneem">
       <div class="bub" aria-hidden="true">We did it, little sis! 💕</div>
       <div class="schar">
+        <div class="aura9"></div>
         <div class="hairback9"></div>
+        <span class="twk9" style="top:8px;left:-14px">✨</span>
+        <span class="twk9 t2" style="top:64px;right:-16px">✨</span>
+        <span class="twk9 t3" style="top:128px;left:-12px">✨</span>
         <div class="cap9"><div class="band"></div><div class="board"></div><div class="btnc"></div><div class="tass"></div></div>
         <div class="head9"><div class="hair9"></div><div class="hairshine9"></div>
           <span class="flow9">🌸</span>
+          <div class="shd9 sl"></div><div class="shd9 sr"></div>
           <div class="brow9 bl"></div><div class="brow9 br"></div>
           <div class="eyes9"><i></i><i></i></div><div class="nose9"></div>
-          <div class="smile9"></div><div class="blush9 l"></div><div class="blush9 r"></div></div>
+          <div class="smile9"></div><div class="dmp9 dl"></div><div class="dmp9 dr"></div>
+          <div class="blush9 l"></div><div class="blush9 r"></div>
+          <div class="earr9 el"></div><div class="earr9 er"></div></div>
         <div class="neck9"></div>
-        <div class="gown9"><div class="col9"></div><div class="nl9"></div><div class="stole9"></div>
+        <div class="gown9"><div class="glit9"></div><div class="col9"></div><div class="medal9"></div>
+          <div class="stole9"></div>
           <div class="sash9">2026</div><div class="arm9 l"></div>
           <div class="arm9 r"><span class="dip9">📜</span></div></div>
       </div>
@@ -486,6 +569,22 @@
       g.gain.exponentialRampToValueAtTime(.0001,t+1.1);
       o.connect(g);g.connect(a.destination);o.start(t);o.stop(t+1.2);});
   }catch(e){}}
+  function cheer(){try{var a=ctxa(),dur=1.3,
+    buf=a.createBuffer(1,a.sampleRate*dur,a.sampleRate),d=buf.getChannelData(0);
+    for(var i=0;i<d.length;i++){var t=i/d.length;
+      d[i]=(Math.random()*2-1)*Math.pow(1-t,1.5)*(0.4+0.6*Math.abs(Math.sin(t*36)));}
+    var src=a.createBufferSource();src.buffer=buf;
+    var f=a.createBiquadFilter();f.type='bandpass';f.frequency.value=1300;f.Q.value=.6;
+    var g=a.createGain();g.gain.value=.42;
+    src.connect(f);f.connect(g);g.connect(a.destination);src.start();
+  }catch(e){}}
+  function shutter(){try{var a=ctxa(),
+    buf=a.createBuffer(1,a.sampleRate*.06,a.sampleRate),d=buf.getChannelData(0);
+    for(var i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*(1-i/d.length);
+    var src=a.createBufferSource();src.buffer=buf;
+    var g=a.createGain();g.gain.value=.25;
+    src.connect(g);g.connect(a.destination);src.start();
+  }catch(e){}}
   var musicOn=false,mTimer=null,barI=0;
   var prog=[
     [523.25,659.25,783.99,1046.5],
@@ -520,7 +619,7 @@
     sisters.classList.contains('hug')||sisters.classList.contains('dance');}
   function doCaps(){
     if(busy())return;
-    sisters.classList.add('thrown');chime();hearts(7);
+    sisters.classList.add('thrown');chime();cheer();hearts(7);
     var r=sisters.getBoundingClientRect();
     setTimeout(function(){burst(r.left+r.width/2,r.top);},900);
     setTimeout(function(){sisters.classList.remove('thrown');},2550);
@@ -636,6 +735,32 @@
     el.classList.add('wave');
     setTimeout(function(){el.classList.remove('wave');},2400);
   },7600);
+  /* photo moment: sisters pose, camera flash */
+  var flashEl=document.getElementById('flash');
+  function doFlash(){
+    document.getElementById('sisA').classList.add('wave');
+    document.getElementById('sisB').classList.add('wave');
+    setTimeout(function(){
+      flashEl.classList.add('on');shutter();
+      setTimeout(function(){flashEl.classList.remove('on');},140);
+      setTimeout(function(){flashEl.classList.add('on');shutter();
+        setTimeout(function(){flashEl.classList.remove('on');},120);},420);
+    },650);
+    setTimeout(function(){
+      document.getElementById('sisA').classList.remove('wave');
+      document.getElementById('sisB').classList.remove('wave');},2500);
+  }
+  /* dove pulling congratulation banners */
+  var bnrTexts=['CONGRATS RANEEM & TASNEEM! 🎓','CLASS OF 2026 ✨','SO PROUD OF YOU BOTH 💛'];
+  var bnrI=0;
+  setInterval(function(){
+    if(night)return;
+    var p=document.createElement('div');p.className='plane9';
+    p.innerHTML='<span class="dv">🕊️</span><span class="bnr"></span>';
+    p.querySelector('.bnr').textContent=bnrTexts[bnrI++%bnrTexts.length];
+    scene.appendChild(p);
+    setTimeout(function(){p.remove();},15500);
+  },21000);
   var lastSpk=0;
   scene.addEventListener('pointermove',function(e){
     var now=Date.now();if(now-lastSpk<70)return;lastSpk=now;
@@ -655,6 +780,7 @@
     {t:3600,f:doDance},
     {t:4600,f:doCaps},
     {t:3400,f:doConf},
+    {t:3000,f:doFlash},
     {t:2600,f:function(){setNight(true);}},
     {t:4000,f:function(){launch();launch();}},
     {t:4000,f:function(){launch();talkFns.sisA();}},
