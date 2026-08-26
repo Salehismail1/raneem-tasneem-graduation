@@ -509,6 +509,7 @@
 </style>
 
 <canvas id="confetti"></canvas>
+<audio id="bgm" src="music.mp3" loop preload="auto"></audio>
 <div class="flash9" id="flash" aria-hidden="true"></div>
 
 <div class="start" id="start">
@@ -775,7 +776,7 @@
   function doDance(){
     if(busy())return;
     sisters.classList.add('dance');hearts(6);
-    if(!musicOn){playBar();setTimeout(playBar,1920);}
+    if(!musicOn&&!bgmOn){playBar();setTimeout(playBar,1920);}
     setTimeout(function(){sisters.classList.remove('dance');},3350);
   }
   function doConf(){burst();chime();}
@@ -951,12 +952,24 @@
   function setAuto(on){autoOn=on;clearTimeout(autoTimer);if(on)nextStep();}
 
   /* ---------- START OVERLAY: one tap unlocks sound, then all auto ---------- */
-  var startEl=document.getElementById('start');
+  var startEl=document.getElementById('start'),
+      bgm=document.getElementById('bgm'),bgmOn=false;
+  function startSynth(){
+    if(bgmOn||musicOn)return;
+    musicOn=true;
+    clearInterval(mTimer);playBar();mTimer=setInterval(playBar,1920);
+  }
   document.getElementById('startBtn').addEventListener('click',function(){
     startEl.classList.add('gone');
     try{ctxa();if(actx.state==='suspended')actx.resume();}catch(e){}
-    musicOn=true;
-    clearInterval(mTimer);playBar();mTimer=setInterval(playBar,1920);
+    try{
+      bgm.volume=.85;
+      var pr=bgm.play();
+      if(pr&&pr.then){pr.then(function(){bgmOn=true;}).catch(startSynth);}
+      else{bgmOn=true;}
+      bgm.addEventListener('error',startSynth,{once:true});
+      setTimeout(function(){if(!bgmOn&&bgm.paused)startSynth();},2500);
+    }catch(e){startSynth();}
     doConf();cheer();
     setAuto(true);
   });
