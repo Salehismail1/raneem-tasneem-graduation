@@ -118,8 +118,8 @@
     animation:bob 3.2s ease-in-out infinite;transition:transform .7s cubic-bezier(.3,.9,.4,1)}
   .sis.b{animation-delay:-1.6s}
   @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
-  .sisters.thrown .sis{animation:jump .7s ease}
-  @keyframes jump{40%{transform:translateY(-30px)}}
+  .sisters.thrown .sis{animation:jump .55s ease 3}
+  @keyframes jump{45%{transform:translateY(-32px)}}
   .sisters.hug .sis{animation:none}
   .sisters.hug .sis.a{transform:translateX(clamp(16px,4vw,46px)) rotate(5deg)}
   .sisters.hug .sis.b{transform:translateX(clamp(-46px,-4vw,-16px)) rotate(-5deg)}
@@ -239,13 +239,13 @@
   .sash9{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);
     font-family:var(--sans);font-weight:700;font-size:10px;letter-spacing:.22em;
     color:#f0e0b0;opacity:.9}
-  .arm9{position:absolute;top:12px;width:20px;height:58px;border-radius:12px;background:#232b44;
-    transition:transform .5s ease;transform-origin:top center}
+  .arm9{position:absolute;top:112px;width:19px;height:56px;border-radius:12px;background:#232b44;
+    transition:transform .5s ease;transform-origin:top center;z-index:3}
   .arm9::after{content:"";position:absolute;bottom:-4px;left:50%;transform:translateX(-50%);
     width:14px;height:14px;border-radius:50%;background:#f3c79c}
   .sis.b .arm9{background:#4a2440}
-  .arm9.l{left:-8px;transform:rotate(14deg)}
-  .arm9.r{right:-8px;transform:rotate(-14deg)}
+  .arm9.l{left:22px;transform:rotate(16deg)}
+  .arm9.r{right:22px;transform:rotate(-16deg)}
   .sisters.thrown .arm9.l,.sisters.hug .sis.b .arm9.l,.sisters.dance .arm9.l{transform:rotate(148deg)}
   .sisters.thrown .arm9.r,.sisters.hug .sis.a .arm9.r,.sisters.dance .arm9.r{transform:rotate(-148deg)}
   .dip9{position:absolute;bottom:-11px;left:-4px;font-size:22px;transform:rotate(-24deg)}
@@ -607,8 +607,9 @@
         <div class="gown9"><div class="glit9"></div><div class="sheen9"></div>
           <div class="col9"></div><div class="medal9"></div>
           <div class="stole9"></div>
-          <div class="sash9">2026</div><div class="arm9 l"></div>
-          <div class="arm9 r"><span class="dip9">📜</span></div></div>
+          <div class="sash9">2026</div></div>
+        <div class="arm9 l"></div>
+        <div class="arm9 r"><span class="dip9">📜</span></div>
         <div class="legs9"><i></i><i></i></div>
       </div>
       <div class="tag9"><span data-name>Raneem</span><small dir="rtl">خرّيجة الجامعة 🎓</small></div>
@@ -624,8 +625,9 @@
           <div class="blush9 l"></div><div class="blush9 r"></div></div>
         <div class="neck9"></div>
         <div class="gown9"><div class="col9"></div><div class="stole9"></div>
-          <div class="sash9">2026</div><div class="arm9 l"></div>
-          <div class="arm9 r"><span class="dip9">📜</span></div></div>
+          <div class="sash9">2026</div></div>
+        <div class="arm9 l"></div>
+        <div class="arm9 r"><span class="dip9">📜</span></div>
         <div class="legs9"><i></i><i></i></div>
       </div>
       <div class="tag9"><span data-name2>Tasneem</span><small dir="rtl">ناجحة بالتوجيهي 🎉</small></div>
