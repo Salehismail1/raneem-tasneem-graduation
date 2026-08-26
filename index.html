@@ -215,9 +215,19 @@
   .neck9{position:absolute;top:99px;left:50%;transform:translateX(-50%);width:16px;height:13px;
     background:#f3c79c;z-index:3}
   /* gown */
-  .gown9{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:118px;height:118px;
+  .gown9{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);width:118px;height:96px;
     background:linear-gradient(180deg,#2e3a5c,#232b44);z-index:2;
     clip-path:polygon(26% 0,74% 0,100% 100%,0 100%);border-radius:0 0 14px 14px}
+  /* cute little legs & shoes */
+  .legs9{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:62px;height:25px;
+    z-index:1;display:flex;justify-content:space-between;padding:0 9px}
+  .legs9 i{display:block;width:11px;height:25px;background:#f3c79c;border-radius:5px;
+    position:relative}
+  .legs9 i::after{content:"";position:absolute;bottom:-1px;left:-5px;width:20px;height:10px;
+    border-radius:8px 10px 6px 6px;
+    background:radial-gradient(circle 2.2px at 72% 38%,#f0cd7a 97%,transparent),#232b44}
+  .sis.b .legs9 i::after{
+    background:radial-gradient(circle 2.2px at 72% 38%,#f0cd7a 97%,transparent),#4a2440}
   .sis.b .gown9{background:linear-gradient(180deg,#5e2e50,#4a2440)}
   .gown9::after{content:"";position:absolute;bottom:0;left:0;right:0;height:7px;
     background:#d8ac5a;opacity:.85}
@@ -231,6 +241,8 @@
     color:#f0e0b0;opacity:.9}
   .arm9{position:absolute;top:12px;width:20px;height:58px;border-radius:12px;background:#232b44;
     transition:transform .5s ease;transform-origin:top center}
+  .arm9::after{content:"";position:absolute;bottom:-4px;left:50%;transform:translateX(-50%);
+    width:14px;height:14px;border-radius:50%;background:#f3c79c}
   .sis.b .arm9{background:#4a2440}
   .arm9.l{left:-8px;transform:rotate(14deg)}
   .arm9.r{right:-8px;transform:rotate(-14deg)}
@@ -597,6 +609,7 @@
           <div class="stole9"></div>
           <div class="sash9">2026</div><div class="arm9 l"></div>
           <div class="arm9 r"><span class="dip9">📜</span></div></div>
+        <div class="legs9"><i></i><i></i></div>
       </div>
       <div class="tag9"><span data-name>Raneem</span><small dir="rtl">خرّيجة الجامعة 🎓</small></div>
     </div>
@@ -613,6 +626,7 @@
         <div class="gown9"><div class="col9"></div><div class="stole9"></div>
           <div class="sash9">2026</div><div class="arm9 l"></div>
           <div class="arm9 r"><span class="dip9">📜</span></div></div>
+        <div class="legs9"><i></i><i></i></div>
       </div>
       <div class="tag9"><span data-name2>Tasneem</span><small dir="rtl">ناجحة بالتوجيهي 🎉</small></div>
     </div>
